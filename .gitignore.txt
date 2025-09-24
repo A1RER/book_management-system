@@ -1,0 +1,25 @@
+# Java 编译产生的文件（必须加）
+*.class
+target/
+out/
+
+# 开发工具配置（根据你用的工具选一个添加，或都加上）
+# 如果你用 IntelliJ IDEA
+.idea/
+*.iml
+
+# 如果你用 Eclipse
+.classpath
+.project
+.settings/
+
+# 数据库相关（保护密码，必须加）
+db.properties
+database.conf
+jdbc.properties
+*.sql
+*.bak
+
+# 系统自动生成的垃圾文件（必须加）
+.DS_Store  # Mac电脑会有
+Thumbs.db  # Windows电脑会有
