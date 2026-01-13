@@ -1,48 +1,51 @@
 package com.java.dao;
 /**
- * ¹ÜÀíÔ±µÇÂ¼ÑéÖ¤
+ * ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Â¼ï¿½ï¿½Ö¤
  *
  */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import com.java.model.Admin;
+import com.java.util.MD5Util;
 
 
 /**
- * ¹ÜÀíÔ±Êı¾İ·ÃÎÊ¶ÔÏó£¬¸ºÔğ´¦ÀíÓë¹ÜÀíÔ±Ïà¹ØµÄÊı¾İ¿â²Ù×÷
- * Ìá¹©¹ÜÀíÔ±µÇÂ¼ÈÏÖ¤¡¢ĞÅÏ¢²éÑ¯ºÍ¸üĞÂµÈ¹¦ÄÜ¡£
+ * ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½İ·ï¿½ï¿½Ê¶ï¿½ï¿½ó£¬¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½
+ * ï¿½á¹©ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Â¼ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ñ¯ï¿½Í¸ï¿½ï¿½ÂµÈ¹ï¿½ï¿½Ü¡ï¿½
  */
 
 
 
 public class AdminDao{
 	/**
-	 * ÑéÖ¤¹ÜÀíÔ±µÇÂ¼ĞÅÏ¢
-	 * @param con Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param admin °üº¬ÓÃ»§ÃûºÍÃÜÂëµÄ¹ÜÀíÔ±¶ÔÏó
-	 * @retuen ·µ»Ø°üº¬¹ÜÀíÔ±ĞÅÏ¢µÄResultret,Èç¹ûÑéÖ¤Ê§°ÜÔò·µ»Ønull
-	 * @throws Exception Êı¾İ¿â²Ù×÷Òì³£
+	 * ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Â¼ï¿½ï¿½Ï¢
+	 * @param con ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+	 * @param admin ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
+	 * @retuen ï¿½ï¿½ï¿½Ø°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢ï¿½ï¿½Resultret,ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤Ê§ï¿½ï¿½ï¿½ò·µ»ï¿½null
+	 * @throws Exception ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½ì³£
 	 */
 
-	public Admin login(Connection con,Admin admin) throws Exception{//µÇÂ¼²éÕÒĞÅÏ¢
+	public Admin login(Connection con,Admin admin) throws Exception{//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		Admin resultUser = null;
-		//SQL²éÑ¯Óï¾ä£¬Í¨¹ıÓÃ»§ÃûºÍÃÜÂë²éÕÒ¹ÜÀíÔ±
-		String sql = "select * from admin where admin_name=? and admin_password=?";
-		//´´½¨Ô¤±àÒëÓï¾ä¶ÔÏó
+		//SQLï¿½ï¿½Ñ¯ï¿½ï¿½ä£¬ï¿½È²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+		String sql = "select * from admin where admin_name=?";
+		//ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		PreparedStatement pstmt = (PreparedStatement)con.prepareStatement(sql);
-		//ÉèÖÃµÚÒ»¸ö²ÎÊı£º¹ÜÀíÔ±ÓÃ»§Ãû
-		pstmt.setString(1,admin.getAdmin_name());//½«Ö¸¶¨²ÎÊıÉèÖÃÎª¸ø¶¨ Java String Öµ
-		//ÉèÖÃµÚ¶ş¸ö²ÎÊı£º¹ÜÀíÔ±ÃÜÂë
-		pstmt.setString(2,admin.getAdmin_password());
-		//ÔÚPreparedStatement¶ÔÏóÉÏÖ´ĞĞSQL²éÑ¯£¬²¢·µ»Ø²éÑ¯½á¹ûµÄResultSet¶ÔÏó
+		//ï¿½ï¿½ï¿½Ãµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ã»ï¿½ï¿½ï¿½
+		pstmt.setString(1,admin.getAdmin_name());
+		//ï¿½ï¿½PreparedStatementï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½SQLï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ResultSetï¿½ï¿½ï¿½ï¿½
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
-			resultUser = new Admin();
-			resultUser.setAdmin_id(rs.getInt("admin_id"));
-			resultUser.setAdmin_name(rs.getString("admin_name"));
-			resultUser.setAdmin_phone(rs.getString("admin_phone"));
-			resultUser.setAdmin_password(rs.getString("admin_password"));
+			// Ê¹ï¿½ï¿½MD5ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
+			String dbPassword = rs.getString("admin_password");
+			if(MD5Util.verify(admin.getAdmin_password(), dbPassword)) {
+				resultUser = new Admin();
+				resultUser.setAdmin_id(rs.getInt("admin_id"));
+				resultUser.setAdmin_name(rs.getString("admin_name"));
+				resultUser.setAdmin_phone(rs.getString("admin_phone"));
+				resultUser.setAdmin_password(dbPassword);
+			}
 		}
 		return resultUser;
 	}

@@ -5,19 +5,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.java.model.Reader;
+import com.java.util.MD5Util;
 
 /**
- * ÓÃ»§×¢²áÐÅÏ¢
+ * ï¿½Ã»ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ï¢
  * @author admin
- *ÓÃ»§Êé¿â·ÃÎÊ¶ÔÏó£¬¸ºÔðÓëÊý¾Ý¿â½øÐÐ½»»¥£¬Ìá¹©ÓÃ»§×¢²á£¬µÇÂ¼£¬²éÑ¯ºÍÉ¾³ýµÈ²Ù×÷
+ *ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½ó£¬¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½Ã»ï¿½×¢ï¿½á£¬ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½É¾ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½
  */
 public class UserDao {
 	/**
-	 * ÓÃ»§×¢²á·½·¨
-	 * @param con Êý¾Ý¿âÁ¬½Ó¶ÔÏó
-	 * @param reader °üº¬ÓÃ»§×¢²áÐÅÏ¢µÄ¶ÔÏó
-	 * @return ·µ»ØÊÜÓ°ÏìµÄÐÐÊý
-	 * @throws Exception Êý¾Ý¿â²Ù×÷Òì³£
+	 * ï¿½Ã»ï¿½×¢ï¿½á·½ï¿½ï¿½
+	 * @param con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+	 * @param reader ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä¶ï¿½ï¿½ï¿½
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @throws Exception ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ì³£
 	 */
 	public int register(Connection con,Reader reader) throws Exception{
 		String sql = "insert into reader values(?,?,?,?)";
@@ -25,39 +26,44 @@ public class UserDao {
 		pstmt.setInt(1, reader.getReader_id());
 		pstmt.setString(2, reader.getReader_name());
 		pstmt.setString(3, reader.getReader_phone());
-		pstmt.setString(4, reader.getReader_password());
+		// Ê¹ï¿½ï¿½MD5ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½
+		pstmt.setString(4, MD5Util.encrypt(reader.getReader_password()));
 		return pstmt.executeUpdate();
 	}
 	/**
-	 * ÓÃ»§ÐÅÏ¢²éÕÒ,²éÖØÓÃ£¬ÓÃ»§id²»ÄÜÏàÍ¬
-	 * ÓÃ»§µÇÂ½ÑéÖ¤·½·¨
-	 * @param con Êý¾Ý¿âÁ¬½Ó¶ÔÏó
-	 * @param reader °üº¬ÓÃ»§µÇÂ¼ÐÅÏ¢µÄ¶ÔÏó
-	 * @return ·µ»ØÑéÖ¤³É¹¦ºóµÄÓÃ»§ÐÅÏ¢¶ÔÏó£¬Èç¹ûÑéÖ¤Ê§°ÜÔò·µ»Ønull
-	 * @throws Exception Êý¾Ý¿â²Ù×÷Òì³£
+	 * ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ã»ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬
+	 * ï¿½Ã»ï¿½ï¿½ï¿½Â½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
+	 * @param con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+	 * @param reader ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ï¢ï¿½Ä¶ï¿½ï¿½ï¿½
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤Ê§ï¿½ï¿½ï¿½ò·µ»ï¿½null
+	 * @throws Exception ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ì³£
 	 */
 	public Reader login(Connection con,Reader reader) throws Exception{
 		Reader resultUser = null;
-		String sql ="select * from reader where reader_name=? and reader_password=?";
+		// ï¿½È²ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+		String sql ="select * from reader where reader_name=?";
 		PreparedStatement pstmt = (PreparedStatement)con.prepareStatement(sql);
 		pstmt.setString(1, reader.getReader_name());
-		pstmt.setString(2, reader.getReader_password());
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
-			resultUser = new Reader();
-			resultUser.setReader_id(rs.getInt("reader_id"));
-			resultUser.setReader_name(rs.getString("reader_name"));
-			resultUser.setReader_phone(rs.getString("reader _phone"));//Õâ¶àÁËÒ»¸ö¿Õ¸ñ£¬¹þ¹þ¹þ¹þ¹þ¹þ¹þ
-			resultUser.setReader_password(rs.getString("reader_password"));
+			// Ê¹ï¿½ï¿½MD5ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
+			String dbPassword = rs.getString("reader_password");
+			if(MD5Util.verify(reader.getReader_password(), dbPassword)) {
+				resultUser = new Reader();
+				resultUser.setReader_id(rs.getInt("reader_id"));
+				resultUser.setReader_name(rs.getString("reader_name"));
+				resultUser.setReader_phone(rs.getString("reader_phone")); // ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¸ï¿½ï¿½ï¿½ï¿½
+				resultUser.setReader_password(dbPassword);
+			}
 		}
 		return resultUser;
 	}
 	/**
-	 * Í¨¹ýÓÃ»§Id²éÑ¯ÓÃ»§ËùÓÐÐÅÏ¢
-	 * @param con Êý¾Ý¿âÁ¬½Ó¶ÔÏó
-	 * @param readerId Òª²éÑ¯µÄÓÃ»§id
-	 * @return ·µ»Ø²éÑ¯½á¹ûµÄResultSet¶ÔÏó
-	 * @throws Exception Êý¾Ý¿â²Ù×÷Òì³£
+	 * Í¨ï¿½ï¿½ï¿½Ã»ï¿½Idï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * @param con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+	 * @param readerId Òªï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ã»ï¿½id
+	 * @return ï¿½ï¿½ï¿½Ø²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ResultSetï¿½ï¿½ï¿½ï¿½
+	 * @throws Exception ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ì³£
 	 */
 	public ResultSet query(Connection con, int readerId)throws Exception{
 		String sql = "select * from reader where reader_id = ?";
@@ -66,12 +72,12 @@ public class UserDao {
 		return pstmt.executeQuery();
 	}
 	/**
-	 * É¾³ýÓÃ»§
-	 * ¸ù¾ÝÓÃ»§idÉ¾³ýÓÃ»§ÐÅÏ¢
-	 * @param con Êý¾Ý¿âÁ¬½Ó¶ÔÏó
-	 * @param readerId ÒªÉ¾³ýµÄÓÃ»§id
-	 * @return ·µ»ØÊÜÓ°ÏìµÄÐÐÊý
-	 * @throws Exception Êý¾Ý¿â²Ù×÷Òì³£
+	 * É¾ï¿½ï¿½ï¿½Ã»ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½idÉ¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	 * @param con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+	 * @param readerId ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½id
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @throws Exception ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ì³£
 	 */
 	public int delete(Connection con, int readerId)throws Exception{
 		String sql = "delete from reader where reader_id = ?";
