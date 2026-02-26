@@ -1,23 +1,21 @@
 package com.java.dao;
 
-import java.sql.ResultSet;
-
 import com.java.frame.EnterInterface;
 import com.java.util.Connect;
 
 /**
- * ³ÌĞòÈë¿ÚÀà£¬¸ºÔğÆô¶¯Í¼Êé¹ÜÀíÏµÍ³£¬ÏÔÊ¾µÇÂ½½çÃæ¡£
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Â½ï¿½ï¿½ï¿½æ¡£
  */
 public class Main {
 	/**
-	 * ³ÌĞòÈë¿Ú·½·¨
-	 * @param args ÃüÁîĞĞ²ÎÊı
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+	 * @param args ï¿½ï¿½ï¿½ï¿½ï¿½Ğ²ï¿½ï¿½ï¿½
 	 */
 
 	public static void main(String[] args) {
-		//´´½¨µÇÂ½½çÃæ¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		EnterInterface ei =new EnterInterface();
-		//ÉèÖÃµÇÂ½½çÃæ¿É¼û
+		//ï¿½ï¿½ï¿½Ãµï¿½Â½ï¿½ï¿½ï¿½ï¿½É¼ï¿½
 		ei.setVisible(true);
 	}
 }
