@@ -6,6 +6,7 @@ package com.java.util;
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 
 public class Connect {
 	Connection con;
@@ -25,6 +26,7 @@ public class Connect {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/book_admin?serverTimezone=UTC","root","123456");
 		}
 		catch(Exception e1){
+			JOptionPane.showMessageDialog(null, "数据库连接失败：\n" + e1.getMessage());
 		}
 		
 		return con;
