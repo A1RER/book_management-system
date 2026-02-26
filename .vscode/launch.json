@@ -6,7 +6,11 @@
             "name": "Run Main",
             "request": "launch",
             "mainClass": "com.java.dao.Main",
-            "vmArgs": "-Dfile.encoding=UTF-8"
+            "vmArgs": "-Dfile.encoding=UTF-8",
+            "classPaths": [
+                "${workspaceFolder}/lib/mysql-connector-java-8.0.15.jar",
+                "${workspaceFolder}/bin"
+            ]
         }
     ]
 }
