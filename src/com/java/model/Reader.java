@@ -1,13 +1,13 @@
 package com.java.model;
 /**
  *
- * ·â×°¶ÁÕßĞÅÏ¢µÄÊµÌåÀà
+ * å°è£…è¯»è€…ä¿¡æ¯çš„å®ä½“ç±»
  */
 public class Reader {
-	private int reader_id;//¶ÁÕßID
-	private String reader_name;//¶ÁÕßÃû
-	private String reader_phone;//¶ÁÕßÊÖ»úºÅ
-	private String reader_password;//¶ÁÕßÃÜÂë
+	private int reader_id;//è¯»è€…ID
+	private String reader_name;//è¯»è€…å
+	private String reader_phone;//è¯»è€…æ‰‹æœºå·
+	private String reader_password;//è¯»è€…å¯†ç 
 	
 	public Reader() {
 		super();

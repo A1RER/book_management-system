@@ -25,17 +25,17 @@ import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 /**
- * ����ͼ����棬�ṩһ��ͼ���û����棬���������µ�ͼ����Ϣ
+ * 添加图书界面，提供一个图形用户界面，用于添加新的图书信息
  */
 public class AddBookInterface extends JFrame {
 	/**
-	 * ������һ���̳���JFrame�Ĵ��ڣ�����Ϊ������ͼ�顱����СΪ663*530����
+	 * 界面是一个继承自JFrame的窗口，标题为“添加图书”，大小为663*530像素
 	 *
-	 * ����
-	 * ����������
-	 * �����������(��5���ر߾�)
-	 * ��������(����5����ǩ���ı���)
-	 * �ײ��ġ����ӡ���ť
+	 * 包含
+	 * 顶部标题栏
+	 * 中央内容面板(带5像素边距)
+	 * 表单区域(包含5个标签和文本框)
+	 * 底部的“添加”按钮
 	 */
 
 	private JPanel contentPane;
@@ -50,36 +50,36 @@ public class AddBookInterface extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * ��������ͼ�����
+	 * 创建添加图书界面
 	 */
 	public AddBookInterface() {
-		setTitle("����ͼ��");
+		setTitle("添加图书");
 		setBounds(100, 100, 663, 530);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		//���������ӡ���ť���󶨵���¼�
-		JButton addButton = new JButton("����");
+		//创建“添加”按钮并绑定点击事件
+		JButton addButton = new JButton("添加");
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//������Ӱ�ť����������ͼ�鷽��
+				//点击添加按钮，调用添加图书方法
 				addBook();
 			}
 		});
 
-		//����5����ǩ(ͼ���š�ͼ�����֡�ͼ�����ߡ������硢״̬)
-		JLabel label = new JLabel("ͼ����:");
+		//创建5个标签(图书编号、图书名字、图书作者、出版社、状态)
+		JLabel label = new JLabel("图书编号:");
 		
-		JLabel label_1 = new JLabel("ͼ������:");
+		JLabel label_1 = new JLabel("图书名字:");
 		
-		JLabel label_2 = new JLabel("ͼ�����ߣ�");
+		JLabel label_2 = new JLabel("图书作者：");
 		
-		JLabel label_3 = new JLabel("�����磺");
+		JLabel label_3 = new JLabel("出版社：");
 		
-		JLabel label_4 = new JLabel("״̬��");
+		JLabel label_4 = new JLabel("状态：");
 
-		//����5���ı���(��������ͼ����Ϣ)
+		//创建5个文本框(用于输入图书信息)
 		bookIdTxt = new JTextField();
 		bookIdTxt.setColumns(10);
 		
@@ -95,13 +95,13 @@ public class AddBookInterface extends JFrame {
 		bookStatusTxt = new JTextField();
 		bookStatusTxt.setColumns(10);
 
-		//ʹ��GroupLayoutͨ��ˮƽ��ʹ�ֱ������ȷ���������λ�úʹ�С
+		//使用GroupLayout通过水平组和垂直组来精确控制组件的位置和大小
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							//��һ�У�ͼ���ű�ǩ���ı���
+							//第一行：图书编号标签和文本框
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(124)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -109,7 +109,7 @@ public class AddBookInterface extends JFrame {
 									.addComponent(label)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addComponent(bookIdTxt, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE))
-								//�����У���ǩ���ı����������
+								//其他行：标签和文本框对齐排列
 									.addGroup(gl_contentPane.createSequentialGroup()
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addComponent(label_1)
@@ -122,13 +122,13 @@ public class AddBookInterface extends JFrame {
 										.addComponent(bookPublishTxt, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
 										.addComponent(bookWriterTxt, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
 										.addComponent(bookNameTxt, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)))))
-							//���Ӱ�ť(����)
+							//添加按钮(居中)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(279)
 							.addComponent(addButton)))
 					.addContainerGap(198, Short.MAX_VALUE))
 		);
-		//��ֱ������
+		//垂直组设置
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
@@ -160,7 +160,7 @@ public class AddBookInterface extends JFrame {
 	}
 
 	/**
-	 * ����ͼ�鷽��
+	 * 添加图书方法
 	 */
 	protected void addBook() {
 		String bookId = this.bookIdTxt.getText();
@@ -169,81 +169,81 @@ public class AddBookInterface extends JFrame {
 		String bookWriter = this.bookWriterTxt.getText();
 		String bookStatus = this.bookStatusTxt.getText();
 		
-		//���ͼ�����Ƿ�Ϊ��
+		//检查图书编号是否为空
 		if(StringNull.isEmpty(bookId)) {
-			JOptionPane.showMessageDialog(null, "ͼ���Ų���Ϊ�գ�");
+			JOptionPane.showMessageDialog(null, "图书编号不能为空！");
 			return;
 		}
 
-		//���ͼ�������Ƿ�Ϊ��
+		//检查图书名称是否为空
 		if(StringNull.isEmpty(bookName)) { 
-			JOptionPane.showMessageDialog(null, "ͼ����������Ϊ�գ�");
+			JOptionPane.showMessageDialog(null, "图书姓名不能为空！");
 			return;
 		}
 
-		//���ͼ��������Ƿ�Ϊ��
+		//检查图书出版社是否为空
 		if(StringNull.isEmpty(bookPublish)) {
-			JOptionPane.showMessageDialog(null, "ͼ������粻��Ϊ�գ�");
+			JOptionPane.showMessageDialog(null, "图书出版社不能为空！");
 			return ;
 		}
 
-		//���ͼ�������Ƿ�Ϊ��
+		//检查图书作者是否为空
 		if(StringNull.isEmpty(bookWriter)) {
-			JOptionPane.showMessageDialog(null, "ͼ�����߲���Ϊ�գ�");
+			JOptionPane.showMessageDialog(null, "图书作者不能为空！");
 			return;
 		}
 
-		//���ͼ��״̬�Ƿ�Ϊ��
+		//检查图书状态是否为空
 		if(StringNull.isEmpty(bookStatus)) {
-			JOptionPane.showMessageDialog(null, "ͼ��״̬����Ϊ�գ�");
+			JOptionPane.showMessageDialog(null, "图书状态不能为空！");
 			return;
 		}
 		
 		Connection con = null;
 		/**
-		 * try�飺�����˿��ܻ��׳��쳣�Ĵ��룬����ִ�е�����ʱ��Java������Щ�����ִ�����
+		 * try块：包含了可能会抛出异常的代码，程序执行到这里时，Java会监控这些代码的执行情况
 		 *
-		 * ��������׳��쳣�ĵ����
-		 * 1.Integer.parseInt(bookId):���bookId����һ����Ч��������ʽ�����׳�NumberFormatException
-		 * 2.contil.loding():�ڼ������ݿ�����ʱ���ܻ��׳�ClassNotFoundException(���ݿ������Ҳ���)��SQLException(������ݿ�����ʧ��)
-		 * 3.bookDao.query2(con,book)��bookDao.add(con,book):��ִ�����ݿ��ѯ�Ͳ������ʱ���ܻ��׳�SQLException
+		 * 具体可能抛出异常的点包括
+		 * 1.Integer.parseInt(bookId):如果bookId不是一个有效的整数格式，会抛出NumberFormatException
+		 * 2.contil.loding():在加载数据库连接时可能会抛出ClassNotFoundException(数据库驱动找不到)或SQLException(如果数据库连接失败)
+		 * 3.bookDao.query2(con,book)和bookDao.add(con,book):在执行数据库查询和插入操作时可能会抛出SQLException
 		 */
 		try {
 			Book book = new Book(Integer.parseInt(bookId), bookName, bookWriter, bookPublish, bookStatus);
-			con = contil.loding();//��ȡ���ݿ�����
+			con = contil.loding();//获取数据库连接
 			ResultSet rs = bookDao.query2(con, book);
 			
 			if(rs.next()) {
-				//���ͼ���Ƿ��Ѿ�����
-				JOptionPane.showMessageDialog(null, "����ʧ�ܣ�");
+				//检查图书是否已经存在
+				JOptionPane.showMessageDialog(null, "添加失败！");
 				return; 
 			}else {
-				//����ͼ����Ϣ�����ݿ�
+				//添加图书信息到数据库
 				bookDao.add(con, book);
-				JOptionPane.showMessageDialog(null, "���ӳɹ���");
+				JOptionPane.showMessageDialog(null, "添加成功！");
 				return;
 			}
 		}
 		/**
-		 * catch ��
-		 * ->���ڲ���try�����׳����쳣��(�����Exception��һ��ͨ�õ��쳣���ͣ����Բ������е��쳣)
+		 * catch 块
+		 * ->用于捕获try块中抛出的异常。(这里的Exception是一个通用的异常类型，可以捕获所有的异常)
 		 *
-		 * ��try���еĴ����׳��쳣ʱ�������������ת��catch����ִ��
+		 * 当try块中的代码抛出异常时，程序会立即跳转到catch块中执行
 		 *
-		 * e.printStackTrace���ڴ�ӡ�쳣�Ķ�ջ������Ϣ
+		 * e.printStackTrace用于打印异常的堆栈跟踪信息
 		 */
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		/**
-		 * finally���еĴ�������try�����Ƿ����쳣������ִ��
-		 * �����finally����Ҫ���ڹر����ݿ����ӣ�ȷ����Դ����ȷ�ͷ�
+		 * finally块中的代码无论try块中是否发生异常，都会执行
+		 * 这里的finally块主要用于关闭数据库连接，确保资源被正确释放
 		 */
 		finally {
 			try {
-				//�ر����ݿ�����
-				//��finally����ʹ��try-catch�������Ϊ�ر����ݿ�����ʱҲ���ܻ��׳��쳣����SQLException
+				//关闭数据库连接
+				//在finally块中使用try-catch语句是因为关闭数据库连接时也可能会抛出异常，如SQLException
 				contil.closeCon(con);
 			} catch (Exception e) {
 				e.printStackTrace();

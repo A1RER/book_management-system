@@ -26,7 +26,7 @@ import com.java.util.StringNull;
 import java.awt.SystemColor;
 
 /**
- * É¾³ıÍ¼Êé½çÃæ£¬Ìá¹©Ò»¸öÍ¼ĞÎÓÃ»§½çÃæ£¬ÓÃÓÚÉ¾³ıÍ¼ÊéĞÅÏ¢
+ * åˆ é™¤å›¾ä¹¦ç•Œé¢ï¼Œæä¾›ä¸€ä¸ªå›¾å½¢ç”¨æˆ·ç•Œé¢ï¼Œç”¨äºåˆ é™¤å›¾ä¹¦ä¿¡æ¯
  */
 
 public class DeleteBookInterface extends JFrame {
@@ -37,109 +37,109 @@ public class DeleteBookInterface extends JFrame {
 	private BookDao bookDao= new BookDao();
 	/**
 	 * Create the frame.
-	 * ´´½¨É¾³ıÍ¼Êé½çÃæ
+	 * åˆ›å»ºåˆ é™¤å›¾ä¹¦ç•Œé¢
 	 */
 	public DeleteBookInterface() {
 		setBackground(Color.WHITE);
 //		setIconImage(Toolkit.getDefaultToolkit().getImage(DeleteBookInterface.class.getResource("C:\\Users\\Sakura\\Desktop\\new\\4\\books_management\\src\\com\\resource\\1.png")));
-		setTitle("É¾³ı½çÃæ");
+		setTitle("åˆ é™¤ç•Œé¢");
 		setBounds(100, 100, 450, 355);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel label = new JLabel("Í¼Êé±àºÅ£º");
-		label.setFont(new Font("ËÎÌå", Font.PLAIN, 20));
+		JLabel label = new JLabel("å›¾ä¹¦ç¼–å·ï¼š");
+		label.setFont(new Font("å®‹ä½“", Font.PLAIN, 20));
 		
 		bookIdTxt = new JTextField();
-		bookIdTxt.setFont(new Font("ËÎÌå", Font.PLAIN, 20));
+		bookIdTxt.setFont(new Font("å®‹ä½“", Font.PLAIN, 20));
 		bookIdTxt.setColumns(10);
 		
-		JButton deleteButton = new JButton("É¾³ı");
+		JButton deleteButton = new JButton("åˆ é™¤");
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µ¯³öÈ·ÈÏ¶Ô»°¿ò
-				int jp = JOptionPane.showConfirmDialog(null, "ÊÇ·ñÈ·ÈÏÉ¾³ı£¡", "Ñ¡ÔñÒ»¸öÑ¡Ïî", JOptionPane.YES_NO_OPTION);
+				//å¼¹å‡ºç¡®è®¤å¯¹è¯æ¡†
+				int jp = JOptionPane.showConfirmDialog(null, "æ˜¯å¦ç¡®è®¤åˆ é™¤ï¼", "é€‰æ‹©ä¸€ä¸ªé€‰é¡¹", JOptionPane.YES_NO_OPTION);
 				
 				if(jp ==JOptionPane.YES_OPTION ) {
-					//È·ÈÏÉ¾³ı£¬µ÷ÓÃÉ¾³ıÍ¼Êé·½·¨
+					//ç¡®è®¤åˆ é™¤ï¼Œè°ƒç”¨åˆ é™¤å›¾ä¹¦æ–¹æ³•
 					deleteBook();
 				}else {
-					JOptionPane.showMessageDialog(null, "ÇëÖØĞÂÌîĞ´±àºÅ£¡");
+					JOptionPane.showMessageDialog(null, "è¯·é‡æ–°å¡«å†™ç¼–å·ï¼");
 				}	
 			}
 		});
 
-		//½çÃæ×é¼ş³õÊ¼»¯
-		deleteButton.setFont(new Font("ËÎÌå", Font.PLAIN, 20));
+		//ç•Œé¢ç»„ä»¶åˆå§‹åŒ–
+		deleteButton.setFont(new Font("å®‹ä½“", Font.PLAIN, 20));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		//Ë®Æ½²¼¾ÖÉèÖÃ
+		//æ°´å¹³å¸ƒå±€è®¾ç½®
 		/**
-		 * Ë®Æ½²¼¾ÖÂß¼­£º
-		 * ÕûÌåÊ¹ÓÃ²¢ĞĞ×é(ParallelGroup),ËùÓĞ×é¼ş×ó¶ÔÆë(Alignment.LEADING)
+		 * æ°´å¹³å¸ƒå±€é€»è¾‘ï¼š
+		 * æ•´ä½“ä½¿ç”¨å¹¶è¡Œç»„(ParallelGroup),æ‰€æœ‰ç»„ä»¶å·¦å¯¹é½(Alignment.LEADING)
 		 *
-		 * Ç¶Ì×ĞòÁĞ×é(SequentialGroup),°üº¬
-		 * ->×ó²à±ß¾à66ÏñËØ£¨addGap(66)£©
-		 * ->±êÇ©£¨¡°Í¼Êé±àºÅ£º¡±£©ºÍÊäÈë¿ò£¨¿í¶È¹Ì¶¨Îª164ÏñËØ£©
-		 * ->É¾³ı°´Å¥Î»ÓÚË®Æ½¾ÓÖĞÆ«ÓÒÎ»ÖÃ£¨×ó²à160ÏñËØ±ß¾à£¬°´Å¥¿í¶È131ÏñËØ£©
+		 * åµŒå¥—åºåˆ—ç»„(SequentialGroup),åŒ…å«
+		 * ->å·¦ä¾§è¾¹è·66åƒç´ ï¼ˆaddGap(66)ï¼‰
+		 * ->æ ‡ç­¾ï¼ˆâ€œå›¾ä¹¦ç¼–å·ï¼šâ€ï¼‰å’Œè¾“å…¥æ¡†ï¼ˆå®½åº¦å›ºå®šä¸º164åƒç´ ï¼‰
+		 * ->åˆ é™¤æŒ‰é’®ä½äºæ°´å¹³å±…ä¸­åå³ä½ç½®ï¼ˆå·¦ä¾§160åƒç´ è¾¹è·ï¼ŒæŒ‰é’®å®½åº¦131åƒç´ ï¼‰
 		 *
-		 * ÓÒ²à±ß¾àÎª86ÏñËØ£¨addContainerGap(86,Short.MAX_VALUE)£©,È·±£½çÃæÓÒ²àÓĞ×ã¹»¿Õ¼ä
+		 * å³ä¾§è¾¹è·ä¸º86åƒç´ ï¼ˆaddContainerGap(86,Short.MAX_VALUE)ï¼‰,ç¡®ä¿ç•Œé¢å³ä¾§æœ‰è¶³å¤Ÿç©ºé—´
 		 */
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							//Í¼ÊéidÊäÈëĞĞ
+							//å›¾ä¹¦idè¾“å…¥è¡Œ
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(66)
 							.addComponent(label)
 							.addPreferredGap(ComponentPlacement.RELATED)
-								//bookIdTxt¿í¶È164ÏñËØ
+								//bookIdTxtå®½åº¦164åƒç´ 
 							.addComponent(bookIdTxt, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
-							//É¾³ı°´Å¥ĞĞ
+							//åˆ é™¤æŒ‰é’®è¡Œ
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(160)
-								//deleteButton¿í¶È31ÏñËØ
+								//deleteButtonå®½åº¦31åƒç´ 
 							.addComponent(deleteButton, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(86, Short.MAX_VALUE))
 		);
 
 		/**
-		 * ´¹Ö±²¼¾ÖÂß¼­
+		 * å‚ç›´å¸ƒå±€é€»è¾‘
 		 *
-		 * ÕûÌåÊ¹ÓÃ²¢ĞĞ×é£¬ËùÓĞ×é¼ş¶¥²¿¶ÔÆë£¨Alignment.LEADING£©
+		 * æ•´ä½“ä½¿ç”¨å¹¶è¡Œç»„ï¼Œæ‰€æœ‰ç»„ä»¶é¡¶éƒ¨å¯¹é½ï¼ˆAlignment.LEADINGï¼‰
 		 *
-		 * Ç¶Ì×ĞòÁĞ×é£¬°üº¬
-		 * 1.¶¥²¿105ÏñËØ±ß¾à
-		 * 2.±êÇ©ºÍÊäÈë¿òÔÚÍ¬Ò»Ë®Æ½ÏßÉÏ£¨Alignment.BASELINE£©
-		 * 3.ÊäÈë¿òºÍÉ¾³ı°´Å¥Ö®¼ä¼ä¾à53ÏñËØ
-		 * µ×²¿±ß¾à77ÏñËØ£¬È·±£½çÃæµ×²¿ÓĞ×ã¹»¿Õ¼ä
+		 * åµŒå¥—åºåˆ—ç»„ï¼ŒåŒ…å«
+		 * 1.é¡¶éƒ¨105åƒç´ è¾¹è·
+		 * 2.æ ‡ç­¾å’Œè¾“å…¥æ¡†åœ¨åŒä¸€æ°´å¹³çº¿ä¸Šï¼ˆAlignment.BASELINEï¼‰
+		 * 3.è¾“å…¥æ¡†å’Œåˆ é™¤æŒ‰é’®ä¹‹é—´é—´è·53åƒç´ 
+		 * åº•éƒ¨è¾¹è·77åƒç´ ï¼Œç¡®ä¿ç•Œé¢åº•éƒ¨æœ‰è¶³å¤Ÿç©ºé—´
 		 */
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-					//¶¥²¿±ß¾à 105ÏñËØ µ×²¿±ß¾à 77ÏñËØ °´Å¥ÓëÊäÈë¿ò¼ä¾à53ÏñËØ
+					//é¡¶éƒ¨è¾¹è· 105åƒç´  åº•éƒ¨è¾¹è· 77åƒç´  æŒ‰é’®ä¸è¾“å…¥æ¡†é—´è·53åƒç´ 
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(105)//¶¥²¿±ß¿ò
+					.addGap(105)//é¡¶éƒ¨è¾¹æ¡†
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label)
 						.addComponent(bookIdTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(53)//ĞĞ¼ä¾à
+					.addGap(53)//è¡Œé—´è·
 					.addComponent(deleteButton)
-					.addContainerGap(77, Short.MAX_VALUE))//µ×²¿±ß¾à
+					.addContainerGap(77, Short.MAX_VALUE))//åº•éƒ¨è¾¹è·
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
 
 	/**
-	 * ¶¨Òå É¾³ıÍ¼Êé·½·¨
+	 * å®šä¹‰ åˆ é™¤å›¾ä¹¦æ–¹æ³•
 	 */
 	protected void deleteBook() {
 		String bookId = this.bookIdTxt.getText();
 
-		//¼ì²éÍ¼Êé±àºÅÊÇ·ñÎª¿Õ
+		//æ£€æŸ¥å›¾ä¹¦ç¼–å·æ˜¯å¦ä¸ºç©º
 		if(StringNull.isEmpty(bookId)) {
-			JOptionPane.showMessageDialog(null, "ÇëÊäÈëÍ¼ÊéµÄ±àºÅ£¡");
+			JOptionPane.showMessageDialog(null, "è¯·è¾“å…¥å›¾ä¹¦çš„ç¼–å·ï¼");
 		}
 		
 		Connection con = null;
@@ -147,23 +147,23 @@ public class DeleteBookInterface extends JFrame {
 			Book book = new Book(Integer.parseInt(bookId));
 			con = conutil.loding();
 			ResultSet rs = bookDao.query2(con, book);
-			//¼ì²éÍ¼ÊéÊÇ·ñ´æÔÚ
+			//æ£€æŸ¥å›¾ä¹¦æ˜¯å¦å­˜åœ¨
 			if(rs.next()) {
-				//É¾³ıÍ¼ÊéĞÅÏ¢
+				//åˆ é™¤å›¾ä¹¦ä¿¡æ¯
 				bookDao.delete(con, Integer.parseInt(bookId));
-				JOptionPane.showMessageDialog(null, "É¾³ı³É¹¦£¡");
+				JOptionPane.showMessageDialog(null, "åˆ é™¤æˆåŠŸï¼");
 				return ;
 			}else {
-				JOptionPane.showMessageDialog(null, "É¾³ıÊ§°Ü£¡");
+				JOptionPane.showMessageDialog(null, "åˆ é™¤å¤±è´¥ï¼");
 				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "É¾³ıÊ§°Ü£¡");
+			JOptionPane.showMessageDialog(null, "åˆ é™¤å¤±è´¥ï¼");
 			return;
 		}finally {
 			try {
-				//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+				//å…³é—­æ•°æ®åº“è¿æ¥
 				conutil.closeCon(con);
 			} catch (Exception e) {
 				e.printStackTrace();

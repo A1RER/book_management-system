@@ -1,15 +1,15 @@
 package com.java.model;
 /**
- * ·â×°Í¼ÊéĞÅÏ¢µÄÊµÌåÀà
+ * å°è£…å›¾ä¹¦ä¿¡æ¯çš„å®ä½“ç±»
  * @author admin
  *
  */
 public class Book {
-	private int book_id;//Í¼Êé±àºÅ
-	private String book_name;//Í¼ÊéĞÕÃû
-	private String book_writer;//×÷Õß
-	private String book_publish;//³ö°æÉç
-	private String book_status;//×´Ì¬
+	private int book_id;//å›¾ä¹¦ç¼–å·
+	private String book_name;//å›¾ä¹¦å§“å
+	private String book_writer;//ä½œè€…
+	private String book_publish;//å‡ºç‰ˆç¤¾
+	private String book_status;//çŠ¶æ€
 	
 	public Book() {
 		super();

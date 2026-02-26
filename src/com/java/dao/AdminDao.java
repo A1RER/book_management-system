@@ -1,6 +1,6 @@
 package com.java.dao;
 /**
- * ¹ÜÀíÔ±µÇÂ¼ÑéÖ¤
+ * ç®¡ç†å‘˜ç™»å½•éªŒè¯
  *
  */
 import java.sql.Connection;
@@ -10,32 +10,32 @@ import com.java.model.Admin;
 
 
 /**
- * ¹ÜÀíÔ±Êı¾İ·ÃÎÊ¶ÔÏó£¬¸ºÔğ´¦ÀíÓë¹ÜÀíÔ±Ïà¹ØµÄÊı¾İ¿â²Ù×÷
- * Ìá¹©¹ÜÀíÔ±µÇÂ¼ÈÏÖ¤¡¢ĞÅÏ¢²éÑ¯ºÍ¸üĞÂµÈ¹¦ÄÜ¡£
+ * ç®¡ç†å‘˜æ•°æ®è®¿é—®å¯¹è±¡ï¼Œè´Ÿè´£å¤„ç†ä¸ç®¡ç†å‘˜ç›¸å…³çš„æ•°æ®åº“æ“ä½œ
+ * æä¾›ç®¡ç†å‘˜ç™»å½•è®¤è¯ã€ä¿¡æ¯æŸ¥è¯¢å’Œæ›´æ–°ç­‰åŠŸèƒ½ã€‚
  */
 
 
 
 public class AdminDao{
 	/**
-	 * ÑéÖ¤¹ÜÀíÔ±µÇÂ¼ĞÅÏ¢
-	 * @param con Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param admin °üº¬ÓÃ»§ÃûºÍÃÜÂëµÄ¹ÜÀíÔ±¶ÔÏó
-	 * @retuen ·µ»Ø°üº¬¹ÜÀíÔ±ĞÅÏ¢µÄResultret,Èç¹ûÑéÖ¤Ê§°ÜÔò·µ»Ønull
-	 * @throws Exception Êı¾İ¿â²Ù×÷Òì³£
+	 * éªŒè¯ç®¡ç†å‘˜ç™»å½•ä¿¡æ¯
+	 * @param con æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param admin åŒ…å«ç”¨æˆ·åå’Œå¯†ç çš„ç®¡ç†å‘˜å¯¹è±¡
+	 * @retuen è¿”å›åŒ…å«ç®¡ç†å‘˜ä¿¡æ¯çš„Resultret,å¦‚æœéªŒè¯å¤±è´¥åˆ™è¿”å›null
+	 * @throws Exception æ•°æ®åº“æ“ä½œå¼‚å¸¸
 	 */
 
-	public Admin login(Connection con,Admin admin) throws Exception{//µÇÂ¼²éÕÒĞÅÏ¢
+	public Admin login(Connection con,Admin admin) throws Exception{//ç™»å½•æŸ¥æ‰¾ä¿¡æ¯
 		Admin resultUser = null;
-		//SQL²éÑ¯Óï¾ä£¬Í¨¹ıÓÃ»§ÃûºÍÃÜÂë²éÕÒ¹ÜÀíÔ±
+		//SQLæŸ¥è¯¢è¯­å¥ï¼Œé€šè¿‡ç”¨æˆ·åå’Œå¯†ç æŸ¥æ‰¾ç®¡ç†å‘˜
 		String sql = "select * from admin where admin_name=? and admin_password=?";
-		//´´½¨Ô¤±àÒëÓï¾ä¶ÔÏó
+		//åˆ›å»ºé¢„ç¼–è¯‘è¯­å¥å¯¹è±¡
 		PreparedStatement pstmt = (PreparedStatement)con.prepareStatement(sql);
-		//ÉèÖÃµÚÒ»¸ö²ÎÊı£º¹ÜÀíÔ±ÓÃ»§Ãû
-		pstmt.setString(1,admin.getAdmin_name());//½«Ö¸¶¨²ÎÊıÉèÖÃÎª¸ø¶¨ Java String Öµ
-		//ÉèÖÃµÚ¶ş¸ö²ÎÊı£º¹ÜÀíÔ±ÃÜÂë
+		//è®¾ç½®ç¬¬ä¸€ä¸ªå‚æ•°ï¼šç®¡ç†å‘˜ç”¨æˆ·å
+		pstmt.setString(1,admin.getAdmin_name());//å°†æŒ‡å®šå‚æ•°è®¾ç½®ä¸ºç»™å®š Java String å€¼
+		//è®¾ç½®ç¬¬äºŒä¸ªå‚æ•°ï¼šç®¡ç†å‘˜å¯†ç 
 		pstmt.setString(2,admin.getAdmin_password());
-		//ÔÚPreparedStatement¶ÔÏóÉÏÖ´ĞĞSQL²éÑ¯£¬²¢·µ»Ø²éÑ¯½á¹ûµÄResultSet¶ÔÏó
+		//åœ¨PreparedStatementå¯¹è±¡ä¸Šæ‰§è¡ŒSQLæŸ¥è¯¢ï¼Œå¹¶è¿”å›æŸ¥è¯¢ç»“æœçš„ResultSetå¯¹è±¡
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
 			resultUser = new Admin();

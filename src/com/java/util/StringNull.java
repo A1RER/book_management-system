@@ -1,24 +1,24 @@
 package com.java.util;
 /**
- * ÅĞ¶ÏÊÇ·ñ¿ÕÊäÈë
+ * åˆ¤æ–­æ˜¯å¦ç©ºè¾“å…¥
  * @author admin
  *
  */
 public class StringNull {
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÎª¿Õ
+	 * åˆ¤æ–­æ˜¯å¦ä¸ºç©º
 	 * @param str
 	 * @return
 	 */
 	public static boolean isEmpty(String str)  {
 		if(str==null||"".equals(str.trim())) {
-			return true;//1Õæ
+			return true;//1çœŸ
 		}else {
-			return false;//0¼Ù
+			return false;//0å‡
 		}
 	}
 	/**
-	 * ÅĞ¶ÏÊÇ·ñ²»Îª¿Õ
+	 * åˆ¤æ–­æ˜¯å¦ä¸ä¸ºç©º
 	 * @param str
 	 * @return
 	 */

@@ -32,134 +32,134 @@ import java.awt.Dialog.ModalExclusionType;
 import javax.swing.ImageIcon;
 
 /**
- * ÏµÍ³µÇÂ½½çÃæ
- * Ìá¹©ÓÃ»§ºÍ¹ÜÀíÔ±Á½ÖÖ½ÇÉ«µÄµÇÂ¼¹¦ÄÜ
+ * ç³»ç»Ÿç™»é™†ç•Œé¢
+ * æä¾›ç”¨æˆ·å’Œç®¡ç†å‘˜ä¸¤ç§è§’è‰²çš„ç™»å½•åŠŸèƒ½
  */
 
 public class EnterInterface extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField user_name;//ÓÃ»§ÃûÊäÈë¿ò
-	private JLabel label;//¡°ÓÃ»§Ãû£º¡±±êÇ©
-	private JLabel label_1;//¡°ÃÜÂë£º¡±±êÇ©
-	private JRadioButton userBut;//ÓÃ»§µÇÂ¼µ¥Ñ¡°´Å¥
-	private JRadioButton adminBut;//¹ÜÀíÔ±µÇÂ¼µ¥Ñ¡°´Å¥
+	private JTextField user_name;//ç”¨æˆ·åè¾“å…¥æ¡†
+	private JLabel label;//â€œç”¨æˆ·åï¼šâ€æ ‡ç­¾
+	private JLabel label_1;//â€œå¯†ç ï¼šâ€æ ‡ç­¾
+	private JRadioButton userBut;//ç”¨æˆ·ç™»å½•å•é€‰æŒ‰é’®
+	private JRadioButton adminBut;//ç®¡ç†å‘˜ç™»å½•å•é€‰æŒ‰é’®
 	private final JPanel panel = new JPanel();
-	private JLabel label_2;//ÏµÍ³±êÌâ±êÇ©
-	private JPasswordField user_password;//ÃÜÂëÊäÈë¿ò
-	private Connect conutil= new Connect();//Êı¾İ¿âÁ¬½Ó¹¤¾ß
-	private AdminDao adminDao = new AdminDao();//¹ÜÀíÔ±Êı¾İ·ÃÎÊ¶ÔÏó
-	private UserDao readerDao = new UserDao();//ÓÃ»§Êı¾İ·ÃÎÊ¶ÔÏó
-	private final ButtonGroup buttonGroup = new ButtonGroup();//µ¥Ñ¡°´Å¥×é
-	private int action = 0;//µÇÂ½ÀàĞÍ£º0-Î´Ñ¡Ôñ 1-ÓÃ»§ 2-¹ÜÀíÔ±
+	private JLabel label_2;//ç³»ç»Ÿæ ‡é¢˜æ ‡ç­¾
+	private JPasswordField user_password;//å¯†ç è¾“å…¥æ¡†
+	private Connect conutil= new Connect();//æ•°æ®åº“è¿æ¥å·¥å…·
+	private AdminDao adminDao = new AdminDao();//ç®¡ç†å‘˜æ•°æ®è®¿é—®å¯¹è±¡
+	private UserDao readerDao = new UserDao();//ç”¨æˆ·æ•°æ®è®¿é—®å¯¹è±¡
+	private final ButtonGroup buttonGroup = new ButtonGroup();//å•é€‰æŒ‰é’®ç»„
+	private int action = 0;//ç™»é™†ç±»å‹ï¼š0-æœªé€‰æ‹© 1-ç”¨æˆ· 2-ç®¡ç†å‘˜
 	
 	JFrame frame = new JFrame(); 
 	
 	/**
 	 * Create the frame.
-	 * ´´½¨µÇÂ¼´°¿Ú
+	 * åˆ›å»ºç™»å½•çª—å£
 	 */
 	public EnterInterface() {
-		setResizable(false);//½ûÖ¹µ÷Õû´°¿Ú´óĞ¡
-		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Í¼Êé¹ÜÀíÏµÍ³\\Êı¾İ¿â\\window.jpg"));//ÉèÖÃ´°¿ÚÍ¼±ê
-		setTitle("Í¼Êé¹ÜÀíÏµÍ³");//ÉèÖÃ´°¿Ú±êÌâ
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ÉèÖÃ¹Ø±Õ²Ù×÷ÎªÍË³ö³ÌĞò
-		setBounds(100, 100, 663, 530);//ÉèÖÃ´°¿ÚÎ»ÖÃºÍ´óĞ¡
+		setResizable(false);//ç¦æ­¢è°ƒæ•´çª—å£å¤§å°
+		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\å›¾ä¹¦ç®¡ç†ç³»ç»Ÿ\\æ•°æ®åº“\\window.jpg"));//è®¾ç½®çª—å£å›¾æ ‡
+		setTitle("å›¾ä¹¦ç®¡ç†ç³»ç»Ÿ");//è®¾ç½®çª—å£æ ‡é¢˜
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//è®¾ç½®å…³é—­æ“ä½œä¸ºé€€å‡ºç¨‹åº
+		setBounds(100, 100, 663, 530);//è®¾ç½®çª—å£ä½ç½®å’Œå¤§å°
 
-		//³õÊ¼»¯ÄÚÈİÃæ°å
+		//åˆå§‹åŒ–å†…å®¹é¢æ¿
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		//³õÊ¼»¯ÓÃ»§ÃûÊäÈë¿ò
+		//åˆå§‹åŒ–ç”¨æˆ·åè¾“å…¥æ¡†
 		user_name = new JTextField();
 		user_name.setColumns(10);
 
-		//³õÊ¼»¯±êÇ©
-		label = new JLabel("ÓÃ»§Ãû£º");
-		label_1 = new JLabel("ÃÜÂë£º");
+		//åˆå§‹åŒ–æ ‡ç­¾
+		label = new JLabel("ç”¨æˆ·åï¼š");
+		label_1 = new JLabel("å¯†ç ï¼š");
 		label_1.setIcon(null);
 
-		//³õÊ¼»¯µÇÂ¼°´Å¥
-		JButton button = new JButton("µÇÂ¼");
+		//åˆå§‹åŒ–ç™»å½•æŒ‰é’®
+		JButton button = new JButton("ç™»å½•");
 		button.setIcon(null);
 		button.setForeground(Color.BLUE);
 
-		//ÎªµÇÂ¼°´Å¥Ìí¼ÓÊÂ¼ş¼àÌıÆ÷£¨µÚÒ»¸ö¼àÌıÆ÷£¬¼ì²éÊÇ·ñÏÈÔñµÇÂ½·½Ê½£©
+		//ä¸ºç™»å½•æŒ‰é’®æ·»åŠ äº‹ä»¶ç›‘å¬å™¨ï¼ˆç¬¬ä¸€ä¸ªç›‘å¬å™¨ï¼Œæ£€æŸ¥æ˜¯å¦å…ˆæ‹©ç™»é™†æ–¹å¼ï¼‰
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(0 == action)
-				JOptionPane.showMessageDialog(null, "ÇëÑ¡ÔñµÇÂ¼·½Ê½£¡");
+				JOptionPane.showMessageDialog(null, "è¯·é€‰æ‹©ç™»å½•æ–¹å¼ï¼");
 			}
 		});
 		button.setForeground(Color.BLUE);
 
-		//³õÊ¼»¯×¢²á°´Å¥
-		JButton button_1 = new JButton("×¢²á");
+		//åˆå§‹åŒ–æ³¨å†ŒæŒ‰é’®
+		JButton button_1 = new JButton("æ³¨å†Œ");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//´ò¿ª×¢²á½çÃæ
+				//æ‰“å¼€æ³¨å†Œç•Œé¢
 				userRegister(e);
 			}
 		});
 		button_1.setForeground(Color.BLUE);
 
-		//³õÊ¼»¯ÓÃ»§µ¥Ñ¡°´Å¥
-		userBut = new JRadioButton("ÓÃ»§");
-		buttonGroup.add(userBut);//½«ÓÃ»§°´Å¥Ìí¼Óµ½°´Å¥×é
+		//åˆå§‹åŒ–ç”¨æˆ·å•é€‰æŒ‰é’®
+		userBut = new JRadioButton("ç”¨æˆ·");
+		buttonGroup.add(userBut);//å°†ç”¨æˆ·æŒ‰é’®æ·»åŠ åˆ°æŒ‰é’®ç»„
 		userBut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				action =1;//Ñ¡ÔñÓÃ»§µÇÂ¼
+				action =1;//é€‰æ‹©ç”¨æˆ·ç™»å½•
 			}
 		});
 
-		//³õÊ¼»¯¹ÜÀíÔ±µ¥Ñ¡°´Å¥
-		adminBut = new JRadioButton("¹ÜÀíÔ±");
-		buttonGroup.add(adminBut);//½«¹ÜÀíÔ±°´Å¥Ìí¼Óµ½°´Å¥×é
+		//åˆå§‹åŒ–ç®¡ç†å‘˜å•é€‰æŒ‰é’®
+		adminBut = new JRadioButton("ç®¡ç†å‘˜");
+		buttonGroup.add(adminBut);//å°†ç®¡ç†å‘˜æŒ‰é’®æ·»åŠ åˆ°æŒ‰é’®ç»„
 		adminBut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Ñ¡Ôñ¹ÜÀíÔ±µÇÂ¼
+				//é€‰æ‹©ç®¡ç†å‘˜ç™»å½•
 				action = 2;
 			}
 		});
 
-		//ÎªµÇÂ¼°´Å¥Ìí¼ÓÊÂ¼ş¼àÌıÆ÷£¨µÚ¶ş¸ö¼àÌıÆ÷£º´¦ÀíµÇÂ¼Âß¼­£©
+		//ä¸ºç™»å½•æŒ‰é’®æ·»åŠ äº‹ä»¶ç›‘å¬å™¨ï¼ˆç¬¬äºŒä¸ªç›‘å¬å™¨ï¼šå¤„ç†ç™»å½•é€»è¾‘ï¼‰
 		button.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e2) {
-				if(1 == action) {//ÓÃ»§µÇÂ¼
+				if(1 == action) {//ç”¨æˆ·ç™»å½•
 					int toRmif = userLogin(e2);
-					if(1 == toRmif) {//µÇÂ½³É¹¦
+					if(1 == toRmif) {//ç™»é™†æˆåŠŸ
 						ReaderMainInterface Rmif = new ReaderMainInterface();
-						Rmif.setVisible(true);//´ò¿ª¶ÁÕßÖ÷½çÃæ
+						Rmif.setVisible(true);//æ‰“å¼€è¯»è€…ä¸»ç•Œé¢
 					}
 				}	
-				if(2 == action) {//¹ÜÀíÔ±µÇÂ¼
+				if(2 == action) {//ç®¡ç†å‘˜ç™»å½•
 					int toAmif = adminLogin(e2);
-					if(1 == toAmif) {//µÇÂ½³É¹¦
+					if(1 == toAmif) {//ç™»é™†æˆåŠŸ
 						AdminMainInterface Amif = new AdminMainInterface();
-						Amif.setVisible(true);//´ò¿ª¹ÜÀíÔ±Ö÷½çÃæ
+						Amif.setVisible(true);//æ‰“å¼€ç®¡ç†å‘˜ä¸»ç•Œé¢
 					}
 				}
 			}
 		});
 
-		//³õÊ¼»¯²ãÃæ°æ£¨ÓÃÓÚ½çÃæ²¼¾Ö£©
+		//åˆå§‹åŒ–å±‚é¢ç‰ˆï¼ˆç”¨äºç•Œé¢å¸ƒå±€ï¼‰
 		JLayeredPane layeredPane = new JLayeredPane();
 		JLayeredPane layeredPane_1 = new JLayeredPane();
 		JLayeredPane layeredPane_2 = new JLayeredPane();
 
-		//³õÊ¼»¯ÏµÍ³¹ÜÀí±êÇ©
-		label_2 = new JLabel("Í¼Êé¹ÜÀíÏµÍ³");
+		//åˆå§‹åŒ–ç³»ç»Ÿç®¡ç†æ ‡ç­¾
+		label_2 = new JLabel("å›¾ä¹¦ç®¡ç†ç³»ç»Ÿ");
 		label_2.setForeground(Color.BLUE);
-		label_2.setFont(new Font("ËÎÌå", Font.BOLD, 40));
+		label_2.setFont(new Font("å®‹ä½“", Font.BOLD, 40));
 
-		//³õÊ¼»¯ÃÜÂëÊäÈë¿ò
+		//åˆå§‹åŒ–å¯†ç è¾“å…¥æ¡†
 		user_password = new JPasswordField();
 
-		//Ê¹ÓÃGroupLayoutÉèÖÃ½çÃæ²¼¾Ö
+		//ä½¿ç”¨GroupLayoutè®¾ç½®ç•Œé¢å¸ƒå±€
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		//Ë®Æ½·½Ïò
+		//æ°´å¹³æ–¹å‘
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -210,7 +210,7 @@ public class EnterInterface extends JFrame {
 									.addGap(119)))))
 					.addGap(190))
 		);
-		//´¹Ö±·½Ïò
+		//å‚ç›´æ–¹å‘
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -242,48 +242,48 @@ public class EnterInterface extends JFrame {
 							.addComponent(layeredPane_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(button_1)))
 		);
-		contentPane.setLayout(gl_contentPane);//ÉèÖÃ²¼¾Ö¹ÜÀíÆ÷
+		contentPane.setLayout(gl_contentPane);//è®¾ç½®å¸ƒå±€ç®¡ç†å™¨
 	}
 	/**
-	 * ¹ÜÀíÔ±µÇÂ½ÑéÖ¤
-	 * @param e ÊÂ¼ş¶ÔÏó
-	 * @return µÇÂ½³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0
+	 * ç®¡ç†å‘˜ç™»é™†éªŒè¯
+	 * @param e äº‹ä»¶å¯¹è±¡
+	 * @return ç™»é™†æˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0
 	 */
 	private int adminLogin(ActionEvent e)  {
-		String userName = this.user_name.getText();//»ñÈ¡ÓÃ»§Ãû
-		String password = new String(this.user_password.getPassword());//»ñÈ¡ÃÜÂë
-		//ÉèÖÃ¹ÜÀíÔ±ID£¬ÓÃÓÚºóĞø²éÑ¯
+		String userName = this.user_name.getText();//è·å–ç”¨æˆ·å
+		String password = new String(this.user_password.getPassword());//è·å–å¯†ç 
+		//è®¾ç½®ç®¡ç†å‘˜IDï¼Œç”¨äºåç»­æŸ¥è¯¢
 		QueryBookInterface.setAdminId(userName);
-		//ÑéÖ¤ÊäÈë
+		//éªŒè¯è¾“å…¥
 		if(StringNull.isEmpty(userName)) {
-			JOptionPane.showMessageDialog(null, "¹ÜÀíÔ±Ãû²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "ç®¡ç†å‘˜åä¸èƒ½ä¸ºç©ºï¼");
 			return 0;
 		}
 		if(StringNull.isEmpty(password)) {
-			JOptionPane.showMessageDialog(null, "ÃÜÂë²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
 			return 0;
 		}
 		Admin admin = new Admin(userName,password);
 		Connection con =null;
 		try {
-		con = conutil.loding();//Á¬½ÓÊı¾İ¿â
+		con = conutil.loding();//è¿æ¥æ•°æ®åº“
 		Admin curreatAdmin= adminDao.login(con, admin);
 		
 		if(curreatAdmin!=null) {
-			//µÇÂ½³É¹¦
-			JOptionPane.showMessageDialog(null, "¹ÜÀíÔ±µÇÂ½³É¹¦£¡");
+			//ç™»é™†æˆåŠŸ
+			JOptionPane.showMessageDialog(null, "ç®¡ç†å‘˜ç™»é™†æˆåŠŸï¼");
 			return 1;
 		}else {
-			//µÇÂ½Ê§°Ü
-			JOptionPane.showMessageDialog(null, "¹ÜÀíÔ±Ãû»òÕßÃÜÂë´íÎó£¡");
+			//ç™»é™†å¤±è´¥
+			JOptionPane.showMessageDialog(null, "ç®¡ç†å‘˜åæˆ–è€…å¯†ç é”™è¯¯ï¼");
 			return 0;
 		}
 		}catch(Exception e1){
-			e1.printStackTrace();//´òÓ¡Òì³£¶ÑÕ»
+			e1.printStackTrace();//æ‰“å°å¼‚å¸¸å †æ ˆ
 			return 0;
 		}finally {
 			  try {
-				conutil.closeCon(con);//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+				conutil.closeCon(con);//å…³é—­æ•°æ®åº“è¿æ¥
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
@@ -291,57 +291,57 @@ public class EnterInterface extends JFrame {
 	}
 
 	/**
-	 * ÓÃ»§µÇÂ½ÑéÖ¤
-	 * @param e ÊÂ¼ş¶ÔÏó
-	 * @return µÇÂ½³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0
+	 * ç”¨æˆ·ç™»é™†éªŒè¯
+	 * @param e äº‹ä»¶å¯¹è±¡
+	 * @return ç™»é™†æˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0
 	 */
 	private int userLogin(ActionEvent e)  {
-		String userName1 = this.user_name.getText(); //»ñÈ¡ÓÃ»§Ãû
-		String password1 = new String(this.user_password.getPassword());//»ñÈ¡ÃÜÂë
-		//ÉèÖÃ¶ÁÕßID£¬ÓÃÓÚºóĞø²éÑ¯
+		String userName1 = this.user_name.getText(); //è·å–ç”¨æˆ·å
+		String password1 = new String(this.user_password.getPassword());//è·å–å¯†ç 
+		//è®¾ç½®è¯»è€…IDï¼Œç”¨äºåç»­æŸ¥è¯¢
 		 QueryBookInterface.setReaderId(userName1);
-		//ÑéÖ¤ÊäÈë
+		//éªŒè¯è¾“å…¥
 		if(StringNull.isEmpty(userName1)) {
-			JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "ç”¨æˆ·åä¸èƒ½ä¸ºç©ºï¼");
 			return 0;
 		}
 		if(StringNull.isEmpty(password1)) {
-			JOptionPane.showMessageDialog(null, "ÃÜÂë²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
 			return 0;
 		}
 
-		Reader reader =new Reader(userName1,password1);//´´½¨¶ÁÕß¶ÔÏó
+		Reader reader =new Reader(userName1,password1);//åˆ›å»ºè¯»è€…å¯¹è±¡
 		Connection con =null;
 		try {
-		con = conutil.loding();//Á¬½ÓÊı¾İ¿â
+		con = conutil.loding();//è¿æ¥æ•°æ®åº“
 		Reader curreatReader= readerDao.login(con, reader);
 		
 		if(curreatReader!=null) {
-			//µÇÂ½³É¹¦
-			JOptionPane.showMessageDialog(null, "µÇÂ½³É¹¦£¡");
+			//ç™»é™†æˆåŠŸ
+			JOptionPane.showMessageDialog(null, "ç™»é™†æˆåŠŸï¼");
 			return 1;
 		}else {
-			//µÇÂ½Ê§°Ü
-			JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû»òÕßÃÜÂë´íÎó£¡");
+			//ç™»é™†å¤±è´¥
+			JOptionPane.showMessageDialog(null, "ç”¨æˆ·åæˆ–è€…å¯†ç é”™è¯¯ï¼");
 			return 0;
 		}
 		}catch(Exception e1){
-			e1.printStackTrace();//´òÓ¡Òì³£¶ÑÕ»
+			e1.printStackTrace();//æ‰“å°å¼‚å¸¸å †æ ˆ
 			return 0;
 		}finally {
 			  try {
-				conutil.closeCon(con); //¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+				conutil.closeCon(con); //å…³é—­æ•°æ®åº“è¿æ¥
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 		}
 	}
 	/**
-	 * ×¢²áÊÂ¼ş´¦Àí
-	 * @param e ÊÂ¼ş¶ÔÏó
+	 * æ³¨å†Œäº‹ä»¶å¤„ç†
+	 * @param e äº‹ä»¶å¯¹è±¡
 	 */
 	private void userRegister(ActionEvent e) {
 		RegisterInterface ri = new RegisterInterface();
-		ri.setVisible(true);//´ò¿ª×¢²á½çÃæ
+		ri.setVisible(true);//æ‰“å¼€æ³¨å†Œç•Œé¢
 	}
 }

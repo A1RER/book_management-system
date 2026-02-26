@@ -34,67 +34,67 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * Í¼ÊéµÄ²éÑ¯¡¢½èÔÄ¡¢¹é»¹½çÃæ
- * Ìá¹©Í¼ÊéĞÅÏ¢²éÑ¯¡¢½èÔÄºÍ¹é»¹¹¦ÄÜ
+ * å›¾ä¹¦çš„æŸ¥è¯¢ã€å€Ÿé˜…ã€å½’è¿˜ç•Œé¢
+ * æä¾›å›¾ä¹¦ä¿¡æ¯æŸ¥è¯¢ã€å€Ÿé˜…å’Œå½’è¿˜åŠŸèƒ½
  */
 public class QueryBookInterface extends JFrame {
 
-	private JPanel contentPane;//ÄÚÈİÃæ°å
-	private JTextField book_nameTxt;//Í¼ÊéÃû³ÆÎÄ±¾¿ò
-	private JTextField book_writerTxt;//Í¼Êé×÷ÕßÎÄ±¾¿ò
-	private JTextField book_publishTxt;//Í¼Êé³ö°æÉçÎÄ±¾¿ò
-	private Connect conutil= new Connect();//Êı¾İ¿âÁ¬½Ó¹¤¾ß
-	private BookDao bookDao= new BookDao();//Í¼ÊéĞÅÏ¢Êı¾İ·ÃÎÊ¶ÔÏó
-	private BookInformationDao bookInformationDao = new BookInformationDao();//Í¼ÊéĞÅÏ¢Êı¾İ·ÃÎÊ¶ÔÏó
-	public static String readerName;//µ±Ç°¶ÁÕßÃû³Æ£¨¾²Ì¬±äÁ¿£¬ÓÃÓÚ´æ´¢µÇÂ¼µÄ¶ÁÕßĞÅÏ¢£©
-	public static String adminName;//µ±Ç°¹ÜÀíÔ±Ãû³Æ£¨¾²Ì¬±ä¸ü£¬ÓÃÓÚ´æ´¢µÇÂ½µÄ¹ÜÀíÔ±ĞÅÏ¢£©
+	private JPanel contentPane;//å†…å®¹é¢æ¿
+	private JTextField book_nameTxt;//å›¾ä¹¦åç§°æ–‡æœ¬æ¡†
+	private JTextField book_writerTxt;//å›¾ä¹¦ä½œè€…æ–‡æœ¬æ¡†
+	private JTextField book_publishTxt;//å›¾ä¹¦å‡ºç‰ˆç¤¾æ–‡æœ¬æ¡†
+	private Connect conutil= new Connect();//æ•°æ®åº“è¿æ¥å·¥å…·
+	private BookDao bookDao= new BookDao();//å›¾ä¹¦ä¿¡æ¯æ•°æ®è®¿é—®å¯¹è±¡
+	private BookInformationDao bookInformationDao = new BookInformationDao();//å›¾ä¹¦ä¿¡æ¯æ•°æ®è®¿é—®å¯¹è±¡
+	public static String readerName;//å½“å‰è¯»è€…åç§°ï¼ˆé™æ€å˜é‡ï¼Œç”¨äºå­˜å‚¨ç™»å½•çš„è¯»è€…ä¿¡æ¯ï¼‰
+	public static String adminName;//å½“å‰ç®¡ç†å‘˜åç§°ï¼ˆé™æ€å˜æ›´ï¼Œç”¨äºå­˜å‚¨ç™»é™†çš„ç®¡ç†å‘˜ä¿¡æ¯ï¼‰
 
 	/**
 	 * Launch the application.
 	 */
-	JFrame frame = new JFrame();//µ±Ç°´°¿ÚÊµÀı
-	private JTable bookTable;//Í¼Êé±í¸ñ
-	private JPanel panel;//Ãæ°å
-	private JLabel lblNewLabel;//±êÇ©£ºÍ¼ÊéÃû³Æ
-	private JButton borrowButton;//½èÔÄ°´Å¥
-	private JLabel label;//±êÇ©£º×÷Õß
-	private JLabel label_4;//±êÇ©£º³ö°æÉç
-	private JLabel label_5;//±êÇ©£º×´Ì¬
-	private JTextField book_RBnameTxt;//½èÔÄ/¹é»¹Í¼ÊéÃû³Æ ÎÄ±¾¿ò
-	private JTextField book_RBwriterTxt;//½èÔÄ/¹é»¹Í¼Êé×÷Õß ÎÄ±¾¿ò
-	private JTextField book_RBpublishTxt;//½èÔÄ/¹é»¹Í¼Êé³ö°æÉç ÎÄ±¾¿ò
-	private JTextField book_RBstatusTxt;//½èÔÄ/¹é»¹Í¼Êé×´Ì¬ ÎÄ±¾¿ò
-	private JButton returnButton;//¹é»¹°´Å¥
-	private JTextField book_RBidTxt;//½èÔÄ/¹é»¹Í¼ÊéId ÎÄ±¾¿ò
+	JFrame frame = new JFrame();//å½“å‰çª—å£å®ä¾‹
+	private JTable bookTable;//å›¾ä¹¦è¡¨æ ¼
+	private JPanel panel;//é¢æ¿
+	private JLabel lblNewLabel;//æ ‡ç­¾ï¼šå›¾ä¹¦åç§°
+	private JButton borrowButton;//å€Ÿé˜…æŒ‰é’®
+	private JLabel label;//æ ‡ç­¾ï¼šä½œè€…
+	private JLabel label_4;//æ ‡ç­¾ï¼šå‡ºç‰ˆç¤¾
+	private JLabel label_5;//æ ‡ç­¾ï¼šçŠ¶æ€
+	private JTextField book_RBnameTxt;//å€Ÿé˜…/å½’è¿˜å›¾ä¹¦åç§° æ–‡æœ¬æ¡†
+	private JTextField book_RBwriterTxt;//å€Ÿé˜…/å½’è¿˜å›¾ä¹¦ä½œè€… æ–‡æœ¬æ¡†
+	private JTextField book_RBpublishTxt;//å€Ÿé˜…/å½’è¿˜å›¾ä¹¦å‡ºç‰ˆç¤¾ æ–‡æœ¬æ¡†
+	private JTextField book_RBstatusTxt;//å€Ÿé˜…/å½’è¿˜å›¾ä¹¦çŠ¶æ€ æ–‡æœ¬æ¡†
+	private JButton returnButton;//å½’è¿˜æŒ‰é’®
+	private JTextField book_RBidTxt;//å€Ÿé˜…/å½’è¿˜å›¾ä¹¦Id æ–‡æœ¬æ¡†
 	/**
-	 * ¹¹Ôìº¯Êı£¬´´½¨Í¼Êé²éÑ¯½çÃæ
+	 * æ„é€ å‡½æ•°ï¼Œåˆ›å»ºå›¾ä¹¦æŸ¥è¯¢ç•Œé¢
 	 */
 	public QueryBookInterface() {
-		//ÉèÖÃ´°¿Ú±êÌâ
-		setTitle("Í¼ÊéµÄ²éÑ¯£¬½èÔÄ£¬¹é»¹");
-		//ÉèÖÃ¹Ø±Õ²Ù×÷ÎªÒş²Ø´°¿Ú
+		//è®¾ç½®çª—å£æ ‡é¢˜
+		setTitle("å›¾ä¹¦çš„æŸ¥è¯¢ï¼Œå€Ÿé˜…ï¼Œå½’è¿˜");
+		//è®¾ç½®å…³é—­æ“ä½œä¸ºéšè—çª—å£
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		//ÉèÖÃ´°¿ÚÎ»ÖÃºÍ´óĞ¡
+		//è®¾ç½®çª—å£ä½ç½®å’Œå¤§å°
 		setBounds(100, 100, 920, 686);
-		//³õÊ¼»¯ÄÚÈİÃæ°å
+		//åˆå§‹åŒ–å†…å®¹é¢æ¿
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		//³õÊ¼»¯²éÑ¯°´Å¥£¬²¢Ìí¼ÓÊÂ¼ş¼àÌıÆ÷
-		JButton queryButton = new JButton("²éÑ¯");
+		//åˆå§‹åŒ–æŸ¥è¯¢æŒ‰é’®ï¼Œå¹¶æ·»åŠ äº‹ä»¶ç›‘å¬å™¨
+		JButton queryButton = new JButton("æŸ¥è¯¢");
 		queryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µ÷ÓÃ²éÑ¯Í¼Êé·½·¨
+				//è°ƒç”¨æŸ¥è¯¢å›¾ä¹¦æ–¹æ³•
 				queryBookTable(e);
 			}
 		});
 
-		//³õÊ¼»¯±êÇ©
-		JLabel label_1 = new JLabel("Í¼ÊéÃû×Ö:");
-		JLabel label_2 = new JLabel("Í¼Êé×÷Õß£º");
-		JLabel label_3 = new JLabel("³ö°æÉç");
+		//åˆå§‹åŒ–æ ‡ç­¾
+		JLabel label_1 = new JLabel("å›¾ä¹¦åå­—:");
+		JLabel label_2 = new JLabel("å›¾ä¹¦ä½œè€…ï¼š");
+		JLabel label_3 = new JLabel("å‡ºç‰ˆç¤¾");
 
-		//³õÊ¼»¯ÎÄ±¾¿ò
+		//åˆå§‹åŒ–æ–‡æœ¬æ¡†
 		book_nameTxt = new JTextField();
 		book_nameTxt.setColumns(10);
 		
@@ -104,15 +104,15 @@ public class QueryBookInterface extends JFrame {
 		book_publishTxt = new JTextField();
 		book_publishTxt.setColumns(10);
 
-		//³õÊ¼»¯¹ö¶¯Ãæ°åºÍ±í¸ñ
+		//åˆå§‹åŒ–æ»šåŠ¨é¢æ¿å’Œè¡¨æ ¼
 		JScrollPane scrollPane = new JScrollPane();
 
-		//³õÊ¼»¯Ãæ°å
+		//åˆå§‹åŒ–é¢æ¿
 		panel = new JPanel();
 
-		//Ê¹ÓÃGroupLayoutÉèÖÃ½çÃæ²¼¾Ö
+		//ä½¿ç”¨GroupLayoutè®¾ç½®ç•Œé¢å¸ƒå±€
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		//Ë®Æ½·½Ïò
+		//æ°´å¹³æ–¹å‘
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -137,7 +137,7 @@ public class QueryBookInterface extends JFrame {
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 388, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(21, Short.MAX_VALUE))
 		);
-		//´¹Ö±·½Ïò
+		//å‚ç›´æ–¹å‘
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -166,24 +166,24 @@ public class QueryBookInterface extends JFrame {
 					.addGap(21))
 		);
 
-		//³õÊ¼»¯Ãæ°åÖĞµÄ±êÇ©
-		lblNewLabel = new JLabel("Í¼ÊéÃû×Ö£º");
+		//åˆå§‹åŒ–é¢æ¿ä¸­çš„æ ‡ç­¾
+		lblNewLabel = new JLabel("å›¾ä¹¦åå­—ï¼š");
 
-		//³õÊ¼»¯½èÔÄ°´Å¥£¬²¢Ìí¼ÓÊÂ¼ş¼àÌıÆ÷
-		borrowButton = new JButton("½èÔÄ");
+		//åˆå§‹åŒ–å€Ÿé˜…æŒ‰é’®ï¼Œå¹¶æ·»åŠ äº‹ä»¶ç›‘å¬å™¨
+		borrowButton = new JButton("å€Ÿé˜…");
 		borrowButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µ÷ÓÃ½èÔÄÍ¼Êé·½·¨
+				//è°ƒç”¨å€Ÿé˜…å›¾ä¹¦æ–¹æ³•
 				borrowBook();
 			}
 		});
 
-		//³õÊ¼»¯ÆäËû±êÇ©
+		//åˆå§‹åŒ–å…¶ä»–æ ‡ç­¾
 		label = new JLabel("\u4F5C\u8005\uFF1A");
 		label_4 = new JLabel("\u51FA\u7248\u793E\uFF1A");
 		label_5 = new JLabel("\u72B6\u6001\uFF1A");
 
-		//³õÊ¼»¯Ãæ°åÖĞµÄÎÄ±¾¿ò
+		//åˆå§‹åŒ–é¢æ¿ä¸­çš„æ–‡æœ¬æ¡†
 		book_RBnameTxt = new JTextField();
 		book_RBnameTxt.setColumns(10);
 		
@@ -196,22 +196,22 @@ public class QueryBookInterface extends JFrame {
 		book_RBstatusTxt = new JTextField();
 		book_RBstatusTxt.setColumns(10);
 
-		//³õÊ¼»¯¹é»¹°´Å¥£¬²¢Ìí¼ÓÊÂ¼ş¼àÌıÆ÷
-		returnButton = new JButton("¹é»¹");
+		//åˆå§‹åŒ–å½’è¿˜æŒ‰é’®ï¼Œå¹¶æ·»åŠ äº‹ä»¶ç›‘å¬å™¨
+		returnButton = new JButton("å½’è¿˜");
 		returnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				returnBook();
 			}
 		});
 
-		//³õÊ¼»¯Í¼ÊéID±êÇ©ºÍÎÄ±¾¿ò
-		JLabel label_6 = new JLabel("±àºÅ£º");
+		//åˆå§‹åŒ–å›¾ä¹¦IDæ ‡ç­¾å’Œæ–‡æœ¬æ¡†
+		JLabel label_6 = new JLabel("ç¼–å·ï¼š");
 		book_RBidTxt = new JTextField();
 		book_RBidTxt.setColumns(10);
 
-		//Ê¹ÓÃGroupLayoutÉèÖÃÃæ°å²¼¾Ö
+		//ä½¿ç”¨GroupLayoutè®¾ç½®é¢æ¿å¸ƒå±€
 		GroupLayout gl_panel = new GroupLayout(panel);
-		//Ë®Æ½·½Ïò
+		//æ°´å¹³æ–¹å‘
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
@@ -236,7 +236,7 @@ public class QueryBookInterface extends JFrame {
 					.addContainerGap())
 		);
 
-		//´¹Ö±·½Ïò
+		//å‚ç›´æ–¹å‘
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
@@ -268,12 +268,12 @@ public class QueryBookInterface extends JFrame {
 		);
 		panel.setLayout(gl_panel);
 
-		//³õÊ¼»¯Í¼Êé±í¸ñ£¬²¢ÉèÖÃÎª²»¿É±à¼­
+		//åˆå§‹åŒ–å›¾ä¹¦è¡¨æ ¼ï¼Œå¹¶è®¾ç½®ä¸ºä¸å¯ç¼–è¾‘
 		bookTable = new JTable();
 		bookTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				bookTableMousePressed(e);//±í¸ñµã»÷ÊÂ¼ş´¦Àí
+				bookTableMousePressed(e);//è¡¨æ ¼ç‚¹å‡»äº‹ä»¶å¤„ç†
 			}
 		});
 		bookTable.setFillsViewportHeight(true);
@@ -281,7 +281,7 @@ public class QueryBookInterface extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"±àºÅ", "Í¼ÊéÃû×Ö", "×÷Õß", "³ö°æÉç", "×´Ì¬"
+				"ç¼–å·", "å›¾ä¹¦åå­—", "ä½œè€…", "å‡ºç‰ˆç¤¾", "çŠ¶æ€"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -294,51 +294,51 @@ public class QueryBookInterface extends JFrame {
 		scrollPane.setViewportView(bookTable);
 		contentPane.setLayout(gl_contentPane);
 
-		this.fillTable(new Book());//³õÊ¼»¯Í¼ÊéĞÅÏ¢£¬¼ÓÔØËùÓĞÍ¼Êé
+		this.fillTable(new Book());//åˆå§‹åŒ–å›¾ä¹¦ä¿¡æ¯ï¼ŒåŠ è½½æ‰€æœ‰å›¾ä¹¦
 	}
 	/**
-	 * ¹é»¹Í¼Êéº¯Êı
-	 * ´¦ÀíÓÃ»§¹é»¹Í¼ÊéµÄ²Ù×÷
+	 * å½’è¿˜å›¾ä¹¦å‡½æ•°
+	 * å¤„ç†ç”¨æˆ·å½’è¿˜å›¾ä¹¦çš„æ“ä½œ
 	 */
 	protected void returnBook() {
-		//»ñÈ¡Í¼ÊéĞÅÏ¢
+		//è·å–å›¾ä¹¦ä¿¡æ¯
 		String bookId = this.book_RBidTxt.getText();
 		String bookName = this.book_RBnameTxt.getText();
 		String bookPublish =this.book_RBpublishTxt.getText();
 		String bookWriter = this.book_RBwriterTxt.getText();
 		String bookStatus = this.book_RBstatusTxt.getText();
-		//ÑéÖ¤ÊäÈë
+		//éªŒè¯è¾“å…¥
 		if(StringNull.isEmpty(bookId)) {
-			JOptionPane.showMessageDialog(null, "Í¼ÊéĞÅÏ¢²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "å›¾ä¹¦ä¿¡æ¯ä¸èƒ½ä¸ºç©ºï¼");
 			return ;
 		}
 		
 		Connection con = null;
 		try {
-			//´´½¨Í¼ÊéĞÅÏ¢¶ÔÏóºÍÍ¼Êé¶ÔÏó
+			//åˆ›å»ºå›¾ä¹¦ä¿¡æ¯å¯¹è±¡å’Œå›¾ä¹¦å¯¹è±¡
 			BookInformation bi = new BookInformation(Integer.parseInt(bookId));
 			Book book = new Book(Integer.parseInt(bookId));
-			book.setBook_status("0");//°ÑÍ¼Êé×´Ì¬¸Ä±äÎª0£¨¼´ Î´½è³ö£©
+			book.setBook_status("0");//æŠŠå›¾ä¹¦çŠ¶æ€æ”¹å˜ä¸º0ï¼ˆå³ æœªå€Ÿå‡ºï¼‰
 
-			//Á¬½ÓÊı¾İ¿â
+			//è¿æ¥æ•°æ®åº“
 			con = conutil.loding();
-			ResultSet rs = bookInformationDao.returnn(con,bi);//µÃµ½·ûºÏbookIdµÄÄÇÒ»ĞĞ¡£
+			ResultSet rs = bookInformationDao.returnn(con,bi);//å¾—åˆ°ç¬¦åˆbookIdçš„é‚£ä¸€è¡Œã€‚
 			
-			//ÑéÖ¤ÓÃ»§È¨ÏŞ£ºÖ»ÓĞ½è´ËÊéµÄ¶ÁÕß²ÅÄÜ»¹´ËÊé£¬»òÕß¹ÜÀíÔ±¿ÉÒÔ¹é»¹ÈÎºÎÍ¼Êé
+			//éªŒè¯ç”¨æˆ·æƒé™ï¼šåªæœ‰å€Ÿæ­¤ä¹¦çš„è¯»è€…æ‰èƒ½è¿˜æ­¤ä¹¦ï¼Œæˆ–è€…ç®¡ç†å‘˜å¯ä»¥å½’è¿˜ä»»ä½•å›¾ä¹¦
 			if((rs.next() && rs.getString(2).equals(readerName))||((StringNull.isNotEmpty(adminName))&&rs.getString(5).equals("1"))) {
-				bookInformationDao.delete(con, Integer.parseInt(bookId));//É¾³ı½èÊé±íÀïµÄÄÄÒ»ĞĞÊı¾İ
-				bookDao.update(con, book);//¸üĞÂÍ¼Êé±íÖĞµÄÍ¼Êé×´Ì¬
-				JOptionPane.showMessageDialog(null, "¹é»¹³É¹¦£¡");
+				bookInformationDao.delete(con, Integer.parseInt(bookId));//åˆ é™¤å€Ÿä¹¦è¡¨é‡Œçš„å“ªä¸€è¡Œæ•°æ®
+				bookDao.update(con, book);//æ›´æ–°å›¾ä¹¦è¡¨ä¸­çš„å›¾ä¹¦çŠ¶æ€
+				JOptionPane.showMessageDialog(null, "å½’è¿˜æˆåŠŸï¼");
 				return ;
 			}else{
-				JOptionPane.showMessageDialog(null, "¹é»¹Ê§°Ü£¡");
+				JOptionPane.showMessageDialog(null, "å½’è¿˜å¤±è´¥ï¼");
 				return ;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-				conutil.closeCon(con);//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+				conutil.closeCon(con);//å…³é—­æ•°æ®åº“è¿æ¥
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -346,83 +346,83 @@ public class QueryBookInterface extends JFrame {
 		
 	}
 	/**
-	 * ÉèÖÃµ±Ç°¶ÁÕßID
-	 * ÓÃÓÚ´ÓÆäËûÀà½ÓÊÕ¶ÁÕßID
-	 * @param name ¶ÁÕßÃû³Æ
+	 * è®¾ç½®å½“å‰è¯»è€…ID
+	 * ç”¨äºä»å…¶ä»–ç±»æ¥æ”¶è¯»è€…ID
+	 * @param name è¯»è€…åç§°
 	 */
 	public static void setReaderId(String name) {
 		readerName = name;
 	}
 
 	/**
-	 * ÉèÖÃµ±Ç°¹ÜÀíÔ±ID
-	 * ÓÃÓÚ´ÓÆäËûÀà½ÓÊÕ¹ÜÀíÔ±ID
-	 * @param name ¹ÜÀíÔ±Ãû³Æ
+	 * è®¾ç½®å½“å‰ç®¡ç†å‘˜ID
+	 * ç”¨äºä»å…¶ä»–ç±»æ¥æ”¶ç®¡ç†å‘˜ID
+	 * @param name ç®¡ç†å‘˜åç§°
 	 */
 
 	public static void setAdminId(String name) {
 		adminName = name;
 	}
 	/**
-	 *  ¶¨Òå ½èÔÄÍ¼Êéº¯Êı
-	 *  ´¦ÀíÓÃ»§½èÔÄÍ¼ÊéµÄ²Ù×÷
+	 *  å®šä¹‰ å€Ÿé˜…å›¾ä¹¦å‡½æ•°
+	 *  å¤„ç†ç”¨æˆ·å€Ÿé˜…å›¾ä¹¦çš„æ“ä½œ
 	 */
 	private void borrowBook() {
-		//»ñÈ¡Í¼ÊéĞÅÏ¢
+		//è·å–å›¾ä¹¦ä¿¡æ¯
 		String bookId = this.book_RBidTxt.getText();
 		String bookName = this.book_RBnameTxt.getText();
 		String bookPublish = this.book_RBpublishTxt.getText();
 		String bookWriter = this.book_RBwriterTxt.getText();
 		String bookStatus = this.book_RBstatusTxt.getText();
 
-		//ÑéÖ¤ÊäÈë
+		//éªŒè¯è¾“å…¥
 		if(StringNull.isEmpty(bookId)) {
-			JOptionPane.showMessageDialog(null, "Í¼ÊéĞÅÏ¢²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "å›¾ä¹¦ä¿¡æ¯ä¸èƒ½ä¸ºç©ºï¼");
 			return;
 		}
 
-		//ÑéÖ¤Í¼Êé×´Ì¬
+		//éªŒè¯å›¾ä¹¦çŠ¶æ€
 		if(bookStatus.equals("1")) {
-			JOptionPane.showMessageDialog(null, "¸ÃÍ¼ÊéÒÑ±»½è×ßÁË£¡");
+			JOptionPane.showMessageDialog(null, "è¯¥å›¾ä¹¦å·²è¢«å€Ÿèµ°äº†ï¼");
 			return;
 		}
 		
 		Connection con = null;
 		try {
-			con = conutil.loding();//Á¬½ÓÊı¾İ¿â
+			con = conutil.loding();//è¿æ¥æ•°æ®åº“
 
-			//´´½¨Í¼ÊéĞÅÏ¢¶ÔÏó£¨¸ù¾İµ±Ç°ÓÃ»§ÊÇ¶ÁÕß»¹ÊÇ¹ÜÀíÔ±£©
+			//åˆ›å»ºå›¾ä¹¦ä¿¡æ¯å¯¹è±¡ï¼ˆæ ¹æ®å½“å‰ç”¨æˆ·æ˜¯è¯»è€…è¿˜æ˜¯ç®¡ç†å‘˜ï¼‰
 			BookInformation bi;
 			if(StringNull.isNotEmpty(readerName)) {
-				bi = new BookInformation(Integer.parseInt(bookId), readerName, null, null, "1");//¶ÁÕß
+				bi = new BookInformation(Integer.parseInt(bookId), readerName, null, null, "1");//è¯»è€…
 			}else {
-				bi = new BookInformation(Integer.parseInt(bookId), adminName, null, null, "1");//¹ÜÀíÔ±
+				bi = new BookInformation(Integer.parseInt(bookId), adminName, null, null, "1");//ç®¡ç†å‘˜
 			}
 
-			//´´½¨Í¼Êé¶ÔÏó²¢ÉèÖÃ×´Ì¬ÎªÒÑ½è³ö
+			//åˆ›å»ºå›¾ä¹¦å¯¹è±¡å¹¶è®¾ç½®çŠ¶æ€ä¸ºå·²å€Ÿå‡º
 			Book book =new Book(Integer.parseInt(bookId), bookName, bookWriter, bookPublish, "1");
 
-			/*Ö´ĞĞ½èÔÄ²Ù×÷*/
-			//Ìí¼Ó½èÊé¼ÇÂ¼
+			/*æ‰§è¡Œå€Ÿé˜…æ“ä½œ*/
+			//æ·»åŠ å€Ÿä¹¦è®°å½•
 			int find = bookInformationDao.add(con, bi);
-			//¸üĞÂÍ¼Êé×´Ì¬
+			//æ›´æ–°å›¾ä¹¦çŠ¶æ€
 			int flag = bookDao.update(con, book);
-			//¼ì²é²Ù×÷½á¹û
+			//æ£€æŸ¥æ“ä½œç»“æœ
 			if(1 != find ||1 != flag) {
-				JOptionPane.showMessageDialog(null, "½èÔÄÊ§°Ü£¡");
+				JOptionPane.showMessageDialog(null, "å€Ÿé˜…å¤±è´¥ï¼");
 				return;
 			}else {
-				JOptionPane.showMessageDialog(null, "½èÔÄ³É¹¦£¡");
+				JOptionPane.showMessageDialog(null, "å€Ÿé˜…æˆåŠŸï¼");
 				return;
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "½èÔÄÊ§°Ü£¡");
+			JOptionPane.showMessageDialog(null, "å€Ÿé˜…å¤±è´¥ï¼");
 			return ;
 		}finally {
 			try {
-				conutil.closeCon(con);//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+				conutil.closeCon(con);//å…³é—­æ•°æ®åº“è¿æ¥
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -431,15 +431,15 @@ public class QueryBookInterface extends JFrame {
 	}
 	
 	/**
-	 * Í¼Êé±í¸ñÊó±êµã»÷ÊÂ¼ş´¦Àí
-	 * µ±ÓÃ»§µã»÷±í¸ñÖĞµÄÄ³Ò»ĞĞÊ±£¬½«¸ÃĞĞÊı¾İÏÔÊ¾ÔÚÓÒ²àÃæ°åÖĞ
-	 * @param e Êó±êÊÂ¼ş
+	 * å›¾ä¹¦è¡¨æ ¼é¼ æ ‡ç‚¹å‡»äº‹ä»¶å¤„ç†
+	 * å½“ç”¨æˆ·ç‚¹å‡»è¡¨æ ¼ä¸­çš„æŸä¸€è¡Œæ—¶ï¼Œå°†è¯¥è¡Œæ•°æ®æ˜¾ç¤ºåœ¨å³ä¾§é¢æ¿ä¸­
+	 * @param e é¼ æ ‡äº‹ä»¶
 	 */
 	private void bookTableMousePressed(MouseEvent e) {
-		//»ñÈ¡Ñ¡ÖĞµÄĞĞ
+		//è·å–é€‰ä¸­çš„è¡Œ
 		int row = bookTable.getSelectedRow();
 
-		//½«Ñ¡ÖĞĞĞµÄÊı¾İÌî³äµ½ÓÒ²àÃæ°åµÄÎÄ±¾¿òÖĞ
+		//å°†é€‰ä¸­è¡Œçš„æ•°æ®å¡«å……åˆ°å³ä¾§é¢æ¿çš„æ–‡æœ¬æ¡†ä¸­
 		book_RBnameTxt.setText((String)bookTable.getValueAt(row, 1));
 		book_RBwriterTxt.setText((String)bookTable.getValueAt(row, 2));
 		book_RBpublishTxt.setText((String)bookTable.getValueAt(row, 3));
@@ -447,42 +447,42 @@ public class QueryBookInterface extends JFrame {
 		book_RBidTxt.setText((String)bookTable.getValueAt(row, 0));
 	}
 	/**
-	 * Í¼ÊéĞÅÏ¢²éÑ¯º¯Êı
-	 * ¸ù¾İÓÃ»§ÊäÈëµÄÌõ¼ş²éÑ¯Í¼ÊéĞÅÏ¢
-	 * @param e ¶¯×÷ÊÂ¼ş
+	 * å›¾ä¹¦ä¿¡æ¯æŸ¥è¯¢å‡½æ•°
+	 * æ ¹æ®ç”¨æˆ·è¾“å…¥çš„æ¡ä»¶æŸ¥è¯¢å›¾ä¹¦ä¿¡æ¯
+	 * @param e åŠ¨ä½œäº‹ä»¶
 	 */
 	private void queryBookTable(ActionEvent e) {
 
-		//»ñÈ¡ÓÃ»§ÊäÈëµÄ²éÑ¯Ìõ¼ş
+		//è·å–ç”¨æˆ·è¾“å…¥çš„æŸ¥è¯¢æ¡ä»¶
 		String book_name = this.book_nameTxt.getText();
 		String book_writer = this.book_writerTxt.getText();
 		String book_publish = this.book_publishTxt.getText();
 
-		//´´½¨Í¼Êé¶ÔÏó²¢ÉèÖÃ²éÑ¯Ìõ¼ş
+		//åˆ›å»ºå›¾ä¹¦å¯¹è±¡å¹¶è®¾ç½®æŸ¥è¯¢æ¡ä»¶
 		Book book =new Book();
 		book.setBook_name(book_name);
 		book.setBook_writer(book_writer);
 		book.setBook_publish(book_publish);
 
-		//Ìî³ä±í¸ñÊı¾İ
+		//å¡«å……è¡¨æ ¼æ•°æ®
 		this.fillTable(book);
 	}
 
 
 	/**
-	 * Ìî³äÍ¼Êé±í¸ñ
-	 * ¸ù¾İÖ¸¶¨µÄ²éÑ¯Ìõ¼ş£¬´ÓÊı¾İ¿â»ñÈ¡Í¼ÊéĞÅÏ¢²¢Ìî³äµ½±í¸ñÖĞ
-	 * @param book Í¼Êé²éÑ¯Ìõ¼ş¶ÔÏó
+	 * å¡«å……å›¾ä¹¦è¡¨æ ¼
+	 * æ ¹æ®æŒ‡å®šçš„æŸ¥è¯¢æ¡ä»¶ï¼Œä»æ•°æ®åº“è·å–å›¾ä¹¦ä¿¡æ¯å¹¶å¡«å……åˆ°è¡¨æ ¼ä¸­
+	 * @param book å›¾ä¹¦æŸ¥è¯¢æ¡ä»¶å¯¹è±¡
 	 */
 	private void fillTable(Book book) {
 		DefaultTableModel dtm = (DefaultTableModel) bookTable.getModel();
 		dtm.setRowCount(0);
 		Connection con = null;
 		try {
-			con = conutil.loding();//Á¬½ÓÊı¾İ¿â
-			ResultSet rs = bookDao.query(con, book);//²éÑ¯Í¼Êé
+			con = conutil.loding();//è¿æ¥æ•°æ®åº“
+			ResultSet rs = bookDao.query(con, book);//æŸ¥è¯¢å›¾ä¹¦
 
-			//½«²éÑ¯½á¹ûÌî³äµ½±í¸ñÖĞ
+			//å°†æŸ¥è¯¢ç»“æœå¡«å……åˆ°è¡¨æ ¼ä¸­
 			while(rs.next()) {
 				Vector v = new Vector();
 				v.add(rs.getString("book_id"));
@@ -490,19 +490,19 @@ public class QueryBookInterface extends JFrame {
 				v.add(rs.getString("book_writer"));
 				v.add(rs.getString("book_publish"));
 
-				//¸ù¾İÍ¼Êé×´Ì¬ÏÔÊ¾ÏàÓ¦ÎÄ±¾
+				//æ ¹æ®å›¾ä¹¦çŠ¶æ€æ˜¾ç¤ºç›¸åº”æ–‡æœ¬
 				if(rs.getString("book_status").equals("1")) {
-					v.add("ÒÑ½è³ö");
+					v.add("å·²å€Ÿå‡º");
 				}else {
-					v.add("Î´½è³ö");
+					v.add("æœªå€Ÿå‡º");
 				}
-				dtm.addRow(v);//Ìí¼ÓÒ»ĞĞÊı¾İµ½±í¸ñ
+				dtm.addRow(v);//æ·»åŠ ä¸€è¡Œæ•°æ®åˆ°è¡¨æ ¼
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-				conutil.closeCon(con);//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+				conutil.closeCon(con);//å…³é—­æ•°æ®åº“è¿æ¥
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

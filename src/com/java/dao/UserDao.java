@@ -7,17 +7,17 @@ import java.sql.ResultSet;
 import com.java.model.Reader;
 
 /**
- * ÓÃ»§×¢²áĞÅÏ¢
+ * ç”¨æˆ·æ³¨å†Œä¿¡æ¯
  * @author admin
- *ÓÃ»§Êé¿â·ÃÎÊ¶ÔÏó£¬¸ºÔğÓëÊı¾İ¿â½øĞĞ½»»¥£¬Ìá¹©ÓÃ»§×¢²á£¬µÇÂ¼£¬²éÑ¯ºÍÉ¾³ıµÈ²Ù×÷
+ *ç”¨æˆ·ä¹¦åº“è®¿é—®å¯¹è±¡ï¼Œè´Ÿè´£ä¸æ•°æ®åº“è¿›è¡Œäº¤äº’ï¼Œæä¾›ç”¨æˆ·æ³¨å†Œï¼Œç™»å½•ï¼ŒæŸ¥è¯¢å’Œåˆ é™¤ç­‰æ“ä½œ
  */
 public class UserDao {
 	/**
-	 * ÓÃ»§×¢²á·½·¨
-	 * @param con Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param reader °üº¬ÓÃ»§×¢²áĞÅÏ¢µÄ¶ÔÏó
-	 * @return ·µ»ØÊÜÓ°ÏìµÄĞĞÊı
-	 * @throws Exception Êı¾İ¿â²Ù×÷Òì³£
+	 * ç”¨æˆ·æ³¨å†Œæ–¹æ³•
+	 * @param con æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param reader åŒ…å«ç”¨æˆ·æ³¨å†Œä¿¡æ¯çš„å¯¹è±¡
+	 * @return è¿”å›å—å½±å“çš„è¡Œæ•°
+	 * @throws Exception æ•°æ®åº“æ“ä½œå¼‚å¸¸
 	 */
 	public int register(Connection con,Reader reader) throws Exception{
 		String sql = "insert into reader values(?,?,?,?)";
@@ -29,12 +29,12 @@ public class UserDao {
 		return pstmt.executeUpdate();
 	}
 	/**
-	 * ÓÃ»§ĞÅÏ¢²éÕÒ,²éÖØÓÃ£¬ÓÃ»§id²»ÄÜÏàÍ¬
-	 * ÓÃ»§µÇÂ½ÑéÖ¤·½·¨
-	 * @param con Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param reader °üº¬ÓÃ»§µÇÂ¼ĞÅÏ¢µÄ¶ÔÏó
-	 * @return ·µ»ØÑéÖ¤³É¹¦ºóµÄÓÃ»§ĞÅÏ¢¶ÔÏó£¬Èç¹ûÑéÖ¤Ê§°ÜÔò·µ»Ønull
-	 * @throws Exception Êı¾İ¿â²Ù×÷Òì³£
+	 * ç”¨æˆ·ä¿¡æ¯æŸ¥æ‰¾,æŸ¥é‡ç”¨ï¼Œç”¨æˆ·idä¸èƒ½ç›¸åŒ
+	 * ç”¨æˆ·ç™»é™†éªŒè¯æ–¹æ³•
+	 * @param con æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param reader åŒ…å«ç”¨æˆ·ç™»å½•ä¿¡æ¯çš„å¯¹è±¡
+	 * @return è¿”å›éªŒè¯æˆåŠŸåçš„ç”¨æˆ·ä¿¡æ¯å¯¹è±¡ï¼Œå¦‚æœéªŒè¯å¤±è´¥åˆ™è¿”å›null
+	 * @throws Exception æ•°æ®åº“æ“ä½œå¼‚å¸¸
 	 */
 	public Reader login(Connection con,Reader reader) throws Exception{
 		Reader resultUser = null;
@@ -47,17 +47,17 @@ public class UserDao {
 			resultUser = new Reader();
 			resultUser.setReader_id(rs.getInt("reader_id"));
 			resultUser.setReader_name(rs.getString("reader_name"));
-			resultUser.setReader_phone(rs.getString("reader _phone"));//Õâ¶àÁËÒ»¸ö¿Õ¸ñ£¬¹ş¹ş¹ş¹ş¹ş¹ş¹ş
+			resultUser.setReader_phone(rs.getString("reader _phone"));//è¿™å¤šäº†ä¸€ä¸ªç©ºæ ¼ï¼Œå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆ
 			resultUser.setReader_password(rs.getString("reader_password"));
 		}
 		return resultUser;
 	}
 	/**
-	 * Í¨¹ıÓÃ»§Id²éÑ¯ÓÃ»§ËùÓĞĞÅÏ¢
-	 * @param con Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param readerId Òª²éÑ¯µÄÓÃ»§id
-	 * @return ·µ»Ø²éÑ¯½á¹ûµÄResultSet¶ÔÏó
-	 * @throws Exception Êı¾İ¿â²Ù×÷Òì³£
+	 * é€šè¿‡ç”¨æˆ·IdæŸ¥è¯¢ç”¨æˆ·æ‰€æœ‰ä¿¡æ¯
+	 * @param con æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param readerId è¦æŸ¥è¯¢çš„ç”¨æˆ·id
+	 * @return è¿”å›æŸ¥è¯¢ç»“æœçš„ResultSetå¯¹è±¡
+	 * @throws Exception æ•°æ®åº“æ“ä½œå¼‚å¸¸
 	 */
 	public ResultSet query(Connection con, int readerId)throws Exception{
 		String sql = "select * from reader where reader_id = ?";
@@ -66,12 +66,12 @@ public class UserDao {
 		return pstmt.executeQuery();
 	}
 	/**
-	 * É¾³ıÓÃ»§
-	 * ¸ù¾İÓÃ»§idÉ¾³ıÓÃ»§ĞÅÏ¢
-	 * @param con Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param readerId ÒªÉ¾³ıµÄÓÃ»§id
-	 * @return ·µ»ØÊÜÓ°ÏìµÄĞĞÊı
-	 * @throws Exception Êı¾İ¿â²Ù×÷Òì³£
+	 * åˆ é™¤ç”¨æˆ·
+	 * æ ¹æ®ç”¨æˆ·idåˆ é™¤ç”¨æˆ·ä¿¡æ¯
+	 * @param con æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param readerId è¦åˆ é™¤çš„ç”¨æˆ·id
+	 * @return è¿”å›å—å½±å“çš„è¡Œæ•°
+	 * @throws Exception æ•°æ®åº“æ“ä½œå¼‚å¸¸
 	 */
 	public int delete(Connection con, int readerId)throws Exception{
 		String sql = "delete from reader where reader_id = ?";
