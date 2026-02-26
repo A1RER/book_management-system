@@ -6,7 +6,7 @@
             "name": "Run Main",
             "request": "launch",
             "mainClass": "com.java.dao.Main",
-            "vmArgs": "-Dfile.encoding=GBK"
+            "vmArgs": "-Dfile.encoding=UTF-8"
         }
     ]
 }

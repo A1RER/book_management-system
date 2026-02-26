@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.GroupLayout;//ËüÍ¨¹ı½«×é¼ş×éÖ¯³É×éÀ´È·¶¨ËüÃÇÔÚÈİÆ÷ÖĞµÄÎ»ÖÃºÍ´óĞ¡¡£
+import javax.swing.GroupLayout;//å®ƒé€šè¿‡å°†ç»„ä»¶ç»„ç»‡æˆç»„æ¥ç¡®å®šå®ƒä»¬åœ¨å®¹å™¨ä¸­çš„ä½ç½®å’Œå¤§å°ã€‚
 import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -18,7 +18,7 @@ import java.awt.GridLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
-* ¹ÜÀíÔ±²Ù×÷Ö÷½çÃæ£¬Ìá¹©Í¼Êé²éÑ¯£¬½èÔÄ£¬Ìí¼Ó£¬É¾³ı£¬ÓÃ»§²éÑ¯£¬É¾³ıµÈ¹¦ÄÜ°´Å¥
+* ç®¡ç†å‘˜æ“ä½œä¸»ç•Œé¢ï¼Œæä¾›å›¾ä¹¦æŸ¥è¯¢ï¼Œå€Ÿé˜…ï¼Œæ·»åŠ ï¼Œåˆ é™¤ï¼Œç”¨æˆ·æŸ¥è¯¢ï¼Œåˆ é™¤ç­‰åŠŸèƒ½æŒ‰é’®
 * */
 public class AdminMainInterface extends JFrame {
 
@@ -26,7 +26,7 @@ public class AdminMainInterface extends JFrame {
 
 	/**
 	 * Launch the application.
-	 * ´´½¨¹ÜÀíÔ±²Ù×÷Ö÷½çÃæ
+	 * åˆ›å»ºç®¡ç†å‘˜æ“ä½œä¸»ç•Œé¢
 	 */
 	JFrame frame = new JFrame();
 
@@ -34,96 +34,96 @@ public class AdminMainInterface extends JFrame {
 	 * Create the frame.
 	 */
 	public AdminMainInterface() {
-		setTitle("¹ÜÀíÔ±²Ù×÷");
+		setTitle("ç®¡ç†å‘˜æ“ä½œ");
 		setBounds(100, 100, 395, 422);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		//²éÑ¯Í¼Êé°´Å¥
-		JButton queryBook = new JButton("²éÑ¯Í¼Êé");
+		//æŸ¥è¯¢å›¾ä¹¦æŒ‰é’®
+		JButton queryBook = new JButton("æŸ¥è¯¢å›¾ä¹¦");
 		queryBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µã»÷²éÑ¯Í¼Êé°´Å¥£¬´ò¿ª²éÑ¯Í¼Êé½çÃæ
+				//ç‚¹å‡»æŸ¥è¯¢å›¾ä¹¦æŒ‰é’®ï¼Œæ‰“å¼€æŸ¥è¯¢å›¾ä¹¦ç•Œé¢
 				QueryBookInterface qbi = new QueryBookInterface();
 				qbi.setVisible(true);
 			}
 		});
 
-		//½èÔÄÍ¼Êé°´Å¥
-		JButton borrowBook = new JButton("½èÔÄÍ¼Êé");
+		//å€Ÿé˜…å›¾ä¹¦æŒ‰é’®
+		JButton borrowBook = new JButton("å€Ÿé˜…å›¾ä¹¦");
 		borrowBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µã»÷½èÔÄÍ¼Êé°´Å¥£¬´ò¿ª²éÑ¯Í¼Êé½çÃæ
+				//ç‚¹å‡»å€Ÿé˜…å›¾ä¹¦æŒ‰é’®ï¼Œæ‰“å¼€æŸ¥è¯¢å›¾ä¹¦ç•Œé¢
 				QueryBookInterface qbi = new QueryBookInterface();
 				qbi.setVisible(true);
 			}
 		});
 
-		//Ìí¼ÓÍ¼Êé°´Å¥
-		JButton addBook = new JButton("ÔöÌíÍ¼Êé");
+		//æ·»åŠ å›¾ä¹¦æŒ‰é’®
+		JButton addBook = new JButton("å¢æ·»å›¾ä¹¦");
 		addBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µã»÷Ìí¼ÓÍ¼Êé°´Å¥£¬´ò¿ªÌí¼ÓÍ¼Êé½çÃæ
+				//ç‚¹å‡»æ·»åŠ å›¾ä¹¦æŒ‰é’®ï¼Œæ‰“å¼€æ·»åŠ å›¾ä¹¦ç•Œé¢
 				AddBookInterface ai = new AddBookInterface();
 				ai.setVisible(true);
 			}
 		});
 
-		//É¾³ıÍ¼Êé°´Å¥
-		JButton delBook = new JButton("É¾³ıÍ¼Êé");
+		//åˆ é™¤å›¾ä¹¦æŒ‰é’®
+		JButton delBook = new JButton("åˆ é™¤å›¾ä¹¦");
 		delBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µã»÷É¾³ıÍ¼Êé°´Å¥£¬µ÷ÓÃÉ¾³ıÍ¼Êé·½·¨
+				//ç‚¹å‡»åˆ é™¤å›¾ä¹¦æŒ‰é’®ï¼Œè°ƒç”¨åˆ é™¤å›¾ä¹¦æ–¹æ³•
 				deleteBook();
 			}
 		});
 
-		//¹é»¹Í¼Êé°´Å¥
-		JButton returnBook = new JButton("¹é»¹Í¼Êé");
+		//å½’è¿˜å›¾ä¹¦æŒ‰é’®
+		JButton returnBook = new JButton("å½’è¿˜å›¾ä¹¦");
 		returnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µã»÷¹é»¹Í¼Êé°´Å¥£¬´ò¿ª²éÑ¯Í¼Êé½çÃæ
+				//ç‚¹å‡»å½’è¿˜å›¾ä¹¦æŒ‰é’®ï¼Œæ‰“å¼€æŸ¥è¯¢å›¾ä¹¦ç•Œé¢
 				QueryBookInterface qbi = new QueryBookInterface();
 				qbi.setVisible(true);
 			}
 		});
 
-		//É¾³ıÓÃ»§°´Å¥
-		JButton delReader = new JButton("É¾³ıÓÃ»§");
+		//åˆ é™¤ç”¨æˆ·æŒ‰é’®
+		JButton delReader = new JButton("åˆ é™¤ç”¨æˆ·");
 		delReader.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µã»÷É¾³ıÓÃ»§°´Å¥£¬µ÷ÓÃÉ¾³ıÓÃ»§·½·¨
+				//ç‚¹å‡»åˆ é™¤ç”¨æˆ·æŒ‰é’®ï¼Œè°ƒç”¨åˆ é™¤ç”¨æˆ·æ–¹æ³•
 				deleteReader();
 			}
 		});
 
-		//²éÑ¯ÓÃ»§°´Å¥
-		JButton queryReader = new JButton("²éÑ¯ÓÃ»§");
+		//æŸ¥è¯¢ç”¨æˆ·æŒ‰é’®
+		JButton queryReader = new JButton("æŸ¥è¯¢ç”¨æˆ·");
 		queryReader.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µã»÷²éÑ¯ÓÃ»§°´Å¥£¬µ÷ÓÃ²éÑ¯ÓÃ»§·½·¨
+				//ç‚¹å‡»æŸ¥è¯¢ç”¨æˆ·æŒ‰é’®ï¼Œè°ƒç”¨æŸ¥è¯¢ç”¨æˆ·æ–¹æ³•
 				queryReader();
 			}
 		});
 
-		//´´½¨GroupLayout
+		//åˆ›å»ºGroupLayout
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 
-		//Ë®Æ½×éÉèÖÃ
+		//æ°´å¹³ç»„è®¾ç½®
 		gl_contentPane.setHorizontalGroup(
-				//´´½¨Ò»¸ö²¢ĞĞ×é£¬ËùÓĞ×é¼ş×ó¶ÔÆë
+				//åˆ›å»ºä¸€ä¸ªå¹¶è¡Œç»„ï¼Œæ‰€æœ‰ç»„ä»¶å·¦å¯¹é½
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-					/**Ç¶Ì×Ò»¸öĞòÁĞ×é(.createSequentialGroup),
-					 * °üº¬£º
-					 * Ãæ°åÄÚ±ß¾à(addContainerGap())
-					 * Ò»¸ö²¢ĞĞ×é£¬°üº¬ËùÓĞ°´Å¥
-					 * ÓÒ²àÁô³ö251ÏñËØµÄ¿Õ°×£¨addGap(251)£©
+					/**åµŒå¥—ä¸€ä¸ªåºåˆ—ç»„(.createSequentialGroup),
+					 * åŒ…å«ï¼š
+					 * é¢æ¿å†…è¾¹è·(addContainerGap())
+					 * ä¸€ä¸ªå¹¶è¡Œç»„ï¼ŒåŒ…å«æ‰€æœ‰æŒ‰é’®
+					 * å³ä¾§ç•™å‡º251åƒç´ çš„ç©ºç™½ï¼ˆaddGap(251)ï¼‰
 					 */
 					/**
-					 * °´Å¥¿í¶ÈÉèÖÃ
-					 * ´ó¶àÊı°´Å¥×îĞ¡¿í¶ÈÎªGroupLayout.DEFAULT_SIZE
-					 * Short.MAX_VALUE ±íÊ¾Èç¹û´°¿Ú±ä¿í£¬°´Å¥²»»áÎŞÏŞÀ©Õ¹£¬¶øÊÇ±£³Ö¹Ì¶¨×î´ó¿í¶È
+					 * æŒ‰é’®å®½åº¦è®¾ç½®
+					 * å¤§å¤šæ•°æŒ‰é’®æœ€å°å®½åº¦ä¸ºGroupLayout.DEFAULT_SIZE
+					 * Short.MAX_VALUE è¡¨ç¤ºå¦‚æœçª—å£å˜å®½ï¼ŒæŒ‰é’®ä¸ä¼šæ— é™æ‰©å±•ï¼Œè€Œæ˜¯ä¿æŒå›ºå®šæœ€å¤§å®½åº¦
 					 */
 				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 					.addContainerGap()
@@ -138,18 +138,18 @@ public class AdminMainInterface extends JFrame {
 							.addComponent(borrowBook, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 					.addGap(251))
 		);
-		//´¹Ö±×éÉèÖÃ
+		//å‚ç›´ç»„è®¾ç½®
 		gl_contentPane.setVerticalGroup(
-				//Ê¹ÓÃ.createParallelGroup(Alignment.LEADING)´´½¨Ò»¸ö²¢ĞĞ×é
+				//ä½¿ç”¨.createParallelGroup(Alignment.LEADING)åˆ›å»ºä¸€ä¸ªå¹¶è¡Œç»„
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-					//Ê¹ÓÃ.createSequentialGroup() Ç¶Ì×Ò»¸öĞòÁĞ×é£¬°´Ë³ĞòÌí¼ÓËùÓĞ°´Å¥
+					//ä½¿ç”¨.createSequentialGroup() åµŒå¥—ä¸€ä¸ªåºåˆ—ç»„ï¼ŒæŒ‰é¡ºåºæ·»åŠ æ‰€æœ‰æŒ‰é’®
 				.addGroup(gl_contentPane.createSequentialGroup()
 						/**
-						 * Ã¿¸ö°´Å¥Ö®¼äÊ¹ÓÃaddPreferredGap(ComponentPlacement.RELATED)Ìí¼ÓÄ¬ÈÏ¼ä¾à
-						 * °´Å¥¸ß¶ÈÉèÖÃÎªGroupLayout.PREFERRED_SIZE
+						 * æ¯ä¸ªæŒ‰é’®ä¹‹é—´ä½¿ç”¨addPreferredGap(ComponentPlacement.RELATED)æ·»åŠ é»˜è®¤é—´è·
+						 * æŒ‰é’®é«˜åº¦è®¾ç½®ä¸ºGroupLayout.PREFERRED_SIZE
 						 *
-						 * ×îºóÒ»¸ö°´Å¥queryReaderÏÂ·½µÄ¼ä¾àÉèÖÃÎªShort.MAX_VALUE,
-						 * ±íÊ¾Èç¹û´°¿Ú±ä¸ß£¬¶àÓà¿Õ¼ä½«·ÖÅäµ½´Ë´¦£¬Ê¹°´Å¥¼¯ÖĞÔÚ¶¥²¿
+						 * æœ€åä¸€ä¸ªæŒ‰é’®queryReaderä¸‹æ–¹çš„é—´è·è®¾ç½®ä¸ºShort.MAX_VALUE,
+						 * è¡¨ç¤ºå¦‚æœçª—å£å˜é«˜ï¼Œå¤šä½™ç©ºé—´å°†åˆ†é…åˆ°æ­¤å¤„ï¼Œä½¿æŒ‰é’®é›†ä¸­åœ¨é¡¶éƒ¨
 						 */
 					.addGap(1)
 					.addComponent(queryBook, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
@@ -167,12 +167,12 @@ public class AdminMainInterface extends JFrame {
 					.addComponent(queryReader, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 		);
 
-		//½«GroupLayoutÉèÖÃÎªÄÚÈİÃæ°å(contentPane)µÄ²¼¾Ö¹ÜÀíÆ÷
+		//å°†GroupLayoutè®¾ç½®ä¸ºå†…å®¹é¢æ¿(contentPane)çš„å¸ƒå±€ç®¡ç†å™¨
 		contentPane.setLayout(gl_contentPane);
 	}
 
 	/**
-	 * ´ò¿ªÉ¾³ıÓÃ»§½çÃæ
+	 * æ‰“å¼€åˆ é™¤ç”¨æˆ·ç•Œé¢
 	 */
 	protected void deleteReader() {
 		DeleteReaderInterface dif = new DeleteReaderInterface();
@@ -180,7 +180,7 @@ public class AdminMainInterface extends JFrame {
 	}
 
 	/**
-	 * ´ò¿ª²éÑ¯ÓÃ»§½çÃæ
+	 * æ‰“å¼€æŸ¥è¯¢ç”¨æˆ·ç•Œé¢
 	 */
 	protected void queryReader() {
 		QueryReaderInterface qri = new QueryReaderInterface();
@@ -188,7 +188,7 @@ public class AdminMainInterface extends JFrame {
 	}
 
 	/**
-	 * ´ò¿ªÉ¾³ıÍ¼Êé½çÃæ
+	 * æ‰“å¼€åˆ é™¤å›¾ä¹¦ç•Œé¢
 	 */
 	private void deleteBook() {
 		DeleteBookInterface dbi = new DeleteBookInterface();

@@ -1,32 +1,32 @@
 package com.java.model;
 /**
  *
- *¹ÜÀíÔ±ĞÅÏ¢
- * ¸ÃÀàÓÃÓÚ·â×°¹ÜÀíÔ±ĞÅÏ¢£¬×÷ÎªÊı¾İÄ£ĞÍÊ¹ÓÃ
+ *ç®¡ç†å‘˜ä¿¡æ¯
+ * è¯¥ç±»ç”¨äºå°è£…ç®¡ç†å‘˜ä¿¡æ¯ï¼Œä½œä¸ºæ•°æ®æ¨¡å‹ä½¿ç”¨
  */
 public class Admin {
-	private int admin_id;//¹ÜÀíÔ±ID
-	private String admin_name;//¹ÜÀíÔ±Ãû
-	private String admin_phone;//¹ÜÀíÔ±ÊÖ»úºÅ
-	private String admin_password;//¹ÜÀíÔ±ÃÜÂë
+	private int admin_id;//ç®¡ç†å‘˜ID
+	private String admin_name;//ç®¡ç†å‘˜å
+	private String admin_phone;//ç®¡ç†å‘˜æ‰‹æœºå·
+	private String admin_password;//ç®¡ç†å‘˜å¯†ç 
 	
-	//ÎŞ²Î¹¹Ôìº¯Êı£¬ÓÃÓÚ´´½¨Ò»¸öĞÂµÄAdmin¶ÔÏó
+	//æ— å‚æ„é€ å‡½æ•°ï¼Œç”¨äºåˆ›å»ºä¸€ä¸ªæ–°çš„Adminå¯¹è±¡
 	public Admin() {
 		super();
 	}
 	
-	//ÓĞ²Î¹¹Ôìº¯Êı£¬Í¨¹ı´«Èë¹ÜÀíÔ±ÃûºÍÃÜÂëÀ´´´½¨Admin¶ÔÏó
+	//æœ‰å‚æ„é€ å‡½æ•°ï¼Œé€šè¿‡ä¼ å…¥ç®¡ç†å‘˜åå’Œå¯†ç æ¥åˆ›å»ºAdminå¯¹è±¡
 	public Admin(String admin_name, String admin_password) {
 		super();
 		this.admin_name = admin_name;
 		this.admin_password = admin_password;
 	}
 
-	//»ñÈ¡¹ÜÀíÔ±IdµÄ·½·¨
+	//è·å–ç®¡ç†å‘˜Idçš„æ–¹æ³•
 	public int getAdmin_id() {
 		return admin_id;
 	}
-	//ÉèÖÃ¹ÜÀíÔ±IdµÄ·½·¨
+	//è®¾ç½®ç®¡ç†å‘˜Idçš„æ–¹æ³•
 	public void setAdmin_id(int admin_id) {
 		this.admin_id = admin_id;
 	}

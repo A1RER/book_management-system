@@ -14,45 +14,45 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- *ÓÃ»§²Ù×÷Ö÷½çÃæ
- * Ìá¹©²éÑ¯Í¼Êé¡¢½èÔÄÍ¼ÊéĞÅÏ¢ºÍ¹é»¹Í¼ÊéµÈ¹¦ÄÜÈë¿Ú
+ *ç”¨æˆ·æ“ä½œä¸»ç•Œé¢
+ * æä¾›æŸ¥è¯¢å›¾ä¹¦ã€å€Ÿé˜…å›¾ä¹¦ä¿¡æ¯å’Œå½’è¿˜å›¾ä¹¦ç­‰åŠŸèƒ½å…¥å£
  */
 public class ReaderMainInterface extends JFrame {
 
-	private JPanel contentPane; //ÄÚÈİÃæ°å
+	private JPanel contentPane; //å†…å®¹é¢æ¿
 
-	JFrame frame = new JFrame();//µ±Ç°´°¿ÚÊµÀı
+	JFrame frame = new JFrame();//å½“å‰çª—å£å®ä¾‹
 	/**
 	 * Create the frame
-	 * ´´½¨ÓÃ»§²Ù×÷Ö÷½çÃæ
+	 * åˆ›å»ºç”¨æˆ·æ“ä½œä¸»ç•Œé¢
 	 */
 	public ReaderMainInterface() {
-		setTitle("ÓÃ»§²Ù×÷");//ÉèÖÃ´°¿Ú±êÌâ
-		setBounds(100, 100, 450, 300);//ÉèÖÃ´°¿ÚÎ»ÖÃºÍ´óĞ¡
+		setTitle("ç”¨æˆ·æ“ä½œ");//è®¾ç½®çª—å£æ ‡é¢˜
+		setBounds(100, 100, 450, 300);//è®¾ç½®çª—å£ä½ç½®å’Œå¤§å°
 
-		//³õÊ¼»¯ÄÚÈİÃæ°å
+		//åˆå§‹åŒ–å†…å®¹é¢æ¿
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		//²éÑ¯Í¼Êé°´Å¥
-		JButton queryBook = new JButton("²éÑ¯Í¼Êé");
+		//æŸ¥è¯¢å›¾ä¹¦æŒ‰é’®
+		JButton queryBook = new JButton("æŸ¥è¯¢å›¾ä¹¦");
 		queryBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				queryBookfunction();
 			}
 		});
 
-		//½èÔÄÍ¼Êé°´Å¥£¨ĞŞ¸ÄĞÅÏ¢statusÎª1£¬¼´Îª½è³ö£¬Í¬Ê±ÅĞ¶ÏstatusÊÇ·ñÎª1,Ìí¼Óµ½bookinformation£©
-		JButton borrowBook = new JButton("½èÔÄÍ¼Êé");
+		//å€Ÿé˜…å›¾ä¹¦æŒ‰é’®ï¼ˆä¿®æ”¹ä¿¡æ¯statusä¸º1ï¼Œå³ä¸ºå€Ÿå‡ºï¼ŒåŒæ—¶åˆ¤æ–­statusæ˜¯å¦ä¸º1,æ·»åŠ åˆ°bookinformationï¼‰
+		JButton borrowBook = new JButton("å€Ÿé˜…å›¾ä¹¦");
 		borrowBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				queryBookfunction();
 			}
 		});
 
-		//¹é»¹Í¼Êé°´Å¥
-		JButton returnBook = new JButton("¹é»¹Í¼Êé");
+		//å½’è¿˜å›¾ä¹¦æŒ‰é’®
+		JButton returnBook = new JButton("å½’è¿˜å›¾ä¹¦");
 		returnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				queryBookfunction();
@@ -88,12 +88,12 @@ public class ReaderMainInterface extends JFrame {
 	}
 
 	/**
-	 * ²éÑ¯Í¼Êé¹¦ÄÜ
-	 * ´ò¿ªÍ¼Êé²éÑ¯ÏµÍ³½çÃæ£¬ÓÃÓÚ²éÑ¯£¬½èÔÄ£¬¹é»¹Í¼Êé
+	 * æŸ¥è¯¢å›¾ä¹¦åŠŸèƒ½
+	 * æ‰“å¼€å›¾ä¹¦æŸ¥è¯¢ç³»ç»Ÿç•Œé¢ï¼Œç”¨äºæŸ¥è¯¢ï¼Œå€Ÿé˜…ï¼Œå½’è¿˜å›¾ä¹¦
 	 */
 
 	private void queryBookfunction() {
-		QueryBookInterface qbi = new QueryBookInterface();//´´½¨Í¼Êé²éÑ¯½çÃæÊµÀı
-		qbi.setVisible(true);//ÏÔÊ¾Í¼Êé²éÑ¯½çÃæ
+		QueryBookInterface qbi = new QueryBookInterface();//åˆ›å»ºå›¾ä¹¦æŸ¥è¯¢ç•Œé¢å®ä¾‹
+		qbi.setVisible(true);//æ˜¾ç¤ºå›¾ä¹¦æŸ¥è¯¢ç•Œé¢
 	}
 }

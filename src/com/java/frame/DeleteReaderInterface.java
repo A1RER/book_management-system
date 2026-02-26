@@ -25,117 +25,117 @@ import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 /**
- * É¾³ı¶ÁÕß½çÃæ£¬Ìá¹©Ò»¸öÍ¼ĞÎÓÃ»§½çÃæ£¬ÓÃÓÚÉ¾³ı¶ÁÕßĞÅÏ¢
+ * åˆ é™¤è¯»è€…ç•Œé¢ï¼Œæä¾›ä¸€ä¸ªå›¾å½¢ç”¨æˆ·ç•Œé¢ï¼Œç”¨äºåˆ é™¤è¯»è€…ä¿¡æ¯
  */
 public class DeleteReaderInterface extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField readerIdTxt;
-	private UserDao readerDao = new UserDao();//¶ÁÕßÊı¾İ·ÃÎÊ¶ÔÏó
-	private Connect conutil = new Connect(); //Êı¾İ¿âÁ¬½Ó¹¤¾ßÀà
+	private UserDao readerDao = new UserDao();//è¯»è€…æ•°æ®è®¿é—®å¯¹è±¡
+	private Connect conutil = new Connect(); //æ•°æ®åº“è¿æ¥å·¥å…·ç±»
 
 	/**
 	 * Create the frame.
-	 * ´´½¨É¾³ı¶ÁÕß¼ÙÃæ
+	 * åˆ›å»ºåˆ é™¤è¯»è€…å‡é¢
 	 */
 	public DeleteReaderInterface() {
-		setTitle("É¾³ıÓÃ»§");//ÉèÖÃ´°¿Ú±êÌâ
-		setBounds(100, 100, 450, 300);//ÉèÖÃ´°¿ÚÎ»ÖÃºÍ´óĞ¡
-		//³õÊ¼»¯ÄÚÈİÃæ°å²¢ÉèÖÃ±ß¿ò
+		setTitle("åˆ é™¤ç”¨æˆ·");//è®¾ç½®çª—å£æ ‡é¢˜
+		setBounds(100, 100, 450, 300);//è®¾ç½®çª—å£ä½ç½®å’Œå¤§å°
+		//åˆå§‹åŒ–å†…å®¹é¢æ¿å¹¶è®¾ç½®è¾¹æ¡†
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		//´´½¨¡°ÓÃ»§±àºÅ¡±±êÇ©²¢ÉèÖÃ×ÖÌå
-		JLabel label = new JLabel("ÓÃ»§±àºÅ£º");
-		label.setFont(new Font("ËÎÌå", Font.PLAIN, 20));
+		//åˆ›å»ºâ€œç”¨æˆ·ç¼–å·â€æ ‡ç­¾å¹¶è®¾ç½®å­—ä½“
+		JLabel label = new JLabel("ç”¨æˆ·ç¼–å·ï¼š");
+		label.setFont(new Font("å®‹ä½“", Font.PLAIN, 20));
 
-		//´´½¨ÓÃ»§±àºÅÊäÈë¿ò ²¢ÉèÖÃ×ÖÌåºÍÁĞÊı
+		//åˆ›å»ºç”¨æˆ·ç¼–å·è¾“å…¥æ¡† å¹¶è®¾ç½®å­—ä½“å’Œåˆ—æ•°
 		readerIdTxt = new JTextField();
-		readerIdTxt.setFont(new Font("ËÎÌå", Font.PLAIN, 20));
+		readerIdTxt.setFont(new Font("å®‹ä½“", Font.PLAIN, 20));
 		readerIdTxt.setColumns(10);
 
-		//´´½¨¡°É¾³ı´ËÓÃ»§¡±°´Å¥²¢Ìí¼Óµã»÷ÊÂ¼ş¼àÌıÆ÷
+		//åˆ›å»ºâ€œåˆ é™¤æ­¤ç”¨æˆ·â€æŒ‰é’®å¹¶æ·»åŠ ç‚¹å‡»äº‹ä»¶ç›‘å¬å™¨
 		JButton deleteButton = new JButton("\u5220\u9664\u6B64\u7528\u6237");
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µ¯³öÈ·ÈÏ¶Ô»°¿ò£¬Ñ¯ÎÊÓÃ»§ÊÇ·ñÈ·ÈÏÉ¾³ı
-				int i = JOptionPane.showConfirmDialog(null, "ÊÇ·ñÈ·ÈÏÉ¾³ı£¡", "Ñ¡ÔñÒ»¸öÑ¡Ïî", JOptionPane.YES_NO_OPTION);
+				//å¼¹å‡ºç¡®è®¤å¯¹è¯æ¡†ï¼Œè¯¢é—®ç”¨æˆ·æ˜¯å¦ç¡®è®¤åˆ é™¤
+				int i = JOptionPane.showConfirmDialog(null, "æ˜¯å¦ç¡®è®¤åˆ é™¤ï¼", "é€‰æ‹©ä¸€ä¸ªé€‰é¡¹", JOptionPane.YES_NO_OPTION);
 				if(i == JOptionPane.YES_OPTION) {
-					deleteReader();//ÓÃ»§µã»÷¡°ÊÇ¡±£¬²¢Ö´ĞĞÉ¾³ı²Ù×÷
+					deleteReader();//ç”¨æˆ·ç‚¹å‡»â€œæ˜¯â€ï¼Œå¹¶æ‰§è¡Œåˆ é™¤æ“ä½œ
 				}else {
-					JOptionPane.showMessageDialog(null, "ÇëÖØĞÂÌîĞ´±àºÅ£¡");//ÓÃ»§µã»÷¡°·ñ¡±£¬ÌáÊ¾ÖØĞÂÌîĞ´
+					JOptionPane.showMessageDialog(null, "è¯·é‡æ–°å¡«å†™ç¼–å·ï¼");//ç”¨æˆ·ç‚¹å‡»â€œå¦â€ï¼Œæç¤ºé‡æ–°å¡«å†™
 				}
 				
 			}
 		});
-		deleteButton.setFont(new Font("ËÎÌå", Font.PLAIN, 20));//ÉèÖÃ°´Å¥×ÖÌå
+		deleteButton.setFont(new Font("å®‹ä½“", Font.PLAIN, 20));//è®¾ç½®æŒ‰é’®å­—ä½“
 
-		//Ê¹ÓÃGroupLayout²¼¾Ö¹ÜÀíÆ÷ÉèÖÃ½çÃæ²¼¾Ö
+		//ä½¿ç”¨GroupLayoutå¸ƒå±€ç®¡ç†å™¨è®¾ç½®ç•Œé¢å¸ƒå±€
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(76)//×ó²à±ß¾à
-							.addComponent(label)//Ìí¼Ó¡°ÓÃ»§±àºÅ¡±±êÇ©
-							.addPreferredGap(ComponentPlacement.RELATED)//Ìí¼Ó×é¼ş¼äµÄÄ¬ÈÏ¼ä¾à
-							.addComponent(readerIdTxt, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE))//Ìí¼ÓÊäÈë¿ò
+							.addGap(76)//å·¦ä¾§è¾¹è·
+							.addComponent(label)//æ·»åŠ â€œç”¨æˆ·ç¼–å·â€æ ‡ç­¾
+							.addPreferredGap(ComponentPlacement.RELATED)//æ·»åŠ ç»„ä»¶é—´çš„é»˜è®¤é—´è·
+							.addComponent(readerIdTxt, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE))//æ·»åŠ è¾“å…¥æ¡†
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(143)//×ó²à±ß¾à
-							.addComponent(deleteButton)))//Ìí¼ÓÉ¾³ı°´Å¥
-					.addContainerGap(59, Short.MAX_VALUE))//ÓÒ²à±ß¾à
+							.addGap(143)//å·¦ä¾§è¾¹è·
+							.addComponent(deleteButton)))//æ·»åŠ åˆ é™¤æŒ‰é’®
+					.addContainerGap(59, Short.MAX_VALUE))//å³ä¾§è¾¹è·
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(69)//¶¥²¿±ß¾à
+					.addGap(69)//é¡¶éƒ¨è¾¹è·
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(readerIdTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label))//±êÇ©ºÍÊäÈë¿ò¶ÔÆë
-					.addGap(48)//ÖĞ¼ä¼ä¾à
-					.addComponent(deleteButton)//Ìí¼ÓÉ¾³ı°´Å¥
-					.addContainerGap(63, Short.MAX_VALUE))//µ×²¿±ß¾à
+						.addComponent(label))//æ ‡ç­¾å’Œè¾“å…¥æ¡†å¯¹é½
+					.addGap(48)//ä¸­é—´é—´è·
+					.addComponent(deleteButton)//æ·»åŠ åˆ é™¤æŒ‰é’®
+					.addContainerGap(63, Short.MAX_VALUE))//åº•éƒ¨è¾¹è·
 		);
-		contentPane.setLayout(gl_contentPane);//ÉèÖÃ²¼¾Ö¹ÜÀíÆ÷
+		contentPane.setLayout(gl_contentPane);//è®¾ç½®å¸ƒå±€ç®¡ç†å™¨
 	}
 	/**
-	 * ¶¨Òå É¾³ıÓÃ»§¹¦ÄÜ
+	 * å®šä¹‰ åˆ é™¤ç”¨æˆ·åŠŸèƒ½
 	 */
 	protected void deleteReader() {
-		String readerId  = this.readerIdTxt.getText();//»ñÈ¡ÊäÈëµÄÓÃ»§±àºÅ
+		String readerId  = this.readerIdTxt.getText();//è·å–è¾“å…¥çš„ç”¨æˆ·ç¼–å·
 
-		//¼ì²éÓÃ»§±àºÅÊÇ·ñÎª¿Õ
+		//æ£€æŸ¥ç”¨æˆ·ç¼–å·æ˜¯å¦ä¸ºç©º
 		if(StringNull.isEmpty(readerId)) {
-			JOptionPane.showMessageDialog(null, "ÓÃ»§±àºÅ²»ÄÜÎª¿Õ");
+			JOptionPane.showMessageDialog(null, "ç”¨æˆ·ç¼–å·ä¸èƒ½ä¸ºç©º");
 		}
 		
 		Connection con = null;
 		try {
-			con = conutil.loding();//»ñÈ¡Êı¾İ¿âÁ¬½Ó
+			con = conutil.loding();//è·å–æ•°æ®åº“è¿æ¥
 
-			//²éÑ¯ÓÃ»§ÊÇ·ñ´æÔÚ
+			//æŸ¥è¯¢ç”¨æˆ·æ˜¯å¦å­˜åœ¨
 			ResultSet rs = readerDao.query(con, Integer.parseInt(readerId));
 			if(rs.next()) {
-				//ÓÃ»§´æÔÚ Ö´ĞĞÉ¾³ı²Ù×÷
+				//ç”¨æˆ·å­˜åœ¨ æ‰§è¡Œåˆ é™¤æ“ä½œ
 				readerDao.delete(con, Integer.parseInt(readerId));
-				JOptionPane.showMessageDialog(null, "É¾³ı³É¹¦!");
+				JOptionPane.showMessageDialog(null, "åˆ é™¤æˆåŠŸ!");
 				return;
 			}
 			else {
-				//ÓÃ»§²»´æÔÚ£¬ÌáÊ¾É¾³ıÊ§°Ü
-				JOptionPane.showMessageDialog(null, "É¾³ıÊ§°Ü£¡");
+				//ç”¨æˆ·ä¸å­˜åœ¨ï¼Œæç¤ºåˆ é™¤å¤±è´¥
+				JOptionPane.showMessageDialog(null, "åˆ é™¤å¤±è´¥ï¼");
 				return;
 			}
 		
 		} catch (Exception e) {
-			e.printStackTrace();//´òÓ¡Òì³£¶ÑÕ»ĞÅÏ¢
-			JOptionPane.showMessageDialog(null, "É¾³ıÊ§°Ü£¡");
+			e.printStackTrace();//æ‰“å°å¼‚å¸¸å †æ ˆä¿¡æ¯
+			JOptionPane.showMessageDialog(null, "åˆ é™¤å¤±è´¥ï¼");
 			return;
 		}finally {
 			try {
-				conutil.closeCon(con);//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+				conutil.closeCon(con);//å…³é—­æ•°æ®åº“è¿æ¥
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

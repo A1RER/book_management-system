@@ -1,7 +1,7 @@
  package com.java.frame;
  /**
-  * ¶ÁÕß×¢²á½çÃæ
-  * Ìá¹©¶ÁÕß×¢²á¹¦ÄÜ£¬°üÀ¨ÊäÈë¶ÁÕßĞÅÏ¢ºÍÑéÖ¤
+  * è¯»è€…æ³¨å†Œç•Œé¢
+  * æä¾›è¯»è€…æ³¨å†ŒåŠŸèƒ½ï¼ŒåŒ…æ‹¬è¾“å…¥è¯»è€…ä¿¡æ¯å’ŒéªŒè¯
   */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,61 +27,61 @@ import java.awt.Dialog.ModalExclusionType;
 
 public class RegisterInterface extends JFrame {
 
-	private JPanel contentPane;//ÄÚÈİÃæ°å
-	private JTextField reader_id;//¶ÁÕß±àºÅÎÄ±¾¿ò
-	private JTextField reader_name;//¶ÁÕßĞÕÃûÎÄ±¾¿ò
-	private JTextField reader_phone;//¶ÁÕßÊÖ»úºÅÎÄ±¾¿ò
-	private JTextField reader_password;//¶ÁÕßÃÜÂëÎÄ±¾¿ò
-	private Connect conutil= new Connect();//Êı¾İ¿âÁ¬½Ó¹¤¾ß
+	private JPanel contentPane;//å†…å®¹é¢æ¿
+	private JTextField reader_id;//è¯»è€…ç¼–å·æ–‡æœ¬æ¡†
+	private JTextField reader_name;//è¯»è€…å§“åæ–‡æœ¬æ¡†
+	private JTextField reader_phone;//è¯»è€…æ‰‹æœºå·æ–‡æœ¬æ¡†
+	private JTextField reader_password;//è¯»è€…å¯†ç æ–‡æœ¬æ¡†
+	private Connect conutil= new Connect();//æ•°æ®åº“è¿æ¥å·¥å…·
 
-	JFrame frame = new JFrame();//µ±Ç°´°¿ÚÊµÀı
+	JFrame frame = new JFrame();//å½“å‰çª—å£å®ä¾‹
 	/**
 	 * Create the frame.
-	 * ´´½¨×¢²á½çÃæ
+	 * åˆ›å»ºæ³¨å†Œç•Œé¢
 	 */
 	public RegisterInterface() {
-		//ÉèÖÃ´°¿Ú±êÌâ
-		setTitle("×¢²á");
+		//è®¾ç½®çª—å£æ ‡é¢˜
+		setTitle("æ³¨å†Œ");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//ÉèÖÃ´°¿ÚÎ»ÖÃºÍ´óĞ¡
+		//è®¾ç½®çª—å£ä½ç½®å’Œå¤§å°
 		setBounds(100, 100, 663, 530);
 
-		//³õÊ¼»¯ÄÚÈİÃæ°å
+		//åˆå§‹åŒ–å†…å®¹é¢æ¿
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		//³õÊ¼»¯±êÇ©ºÍÎÄ±¾¿ò
-		JLabel label = new JLabel("±àºÅ£º");
+		//åˆå§‹åŒ–æ ‡ç­¾å’Œæ–‡æœ¬æ¡†
+		JLabel label = new JLabel("ç¼–å·ï¼š");
 		reader_id = new JTextField();
 		reader_id.setColumns(10);
 		
-		JLabel label_1 = new JLabel("ĞÕÃû£º");
+		JLabel label_1 = new JLabel("å§“åï¼š");
 		reader_name = new JTextField();
 		reader_name.setColumns(10);
 		
-		JLabel label_2 = new JLabel("ÊÖ»úºÅÂë£º");
+		JLabel label_2 = new JLabel("æ‰‹æœºå·ç ï¼š");
 		reader_phone = new JTextField();
 		reader_phone.setColumns(10);
 		
-		JLabel label_3 = new JLabel("ÃÜÂë£º");
+		JLabel label_3 = new JLabel("å¯†ç ï¼š");
 		reader_password = new JTextField();
 		reader_password.setColumns(10);
 		
-		//³õÊ¼»¯×¢²á°´Å¥²¢Ìí¼ÓÊÂ¼ş¼àÌıÆ÷
-		JButton button = new JButton("×¢²á");
+		//åˆå§‹åŒ–æ³¨å†ŒæŒ‰é’®å¹¶æ·»åŠ äº‹ä»¶ç›‘å¬å™¨
+		JButton button = new JButton("æ³¨å†Œ");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µ÷ÓÃÓÃ»§×¢²á·½·¨
+				//è°ƒç”¨ç”¨æˆ·æ³¨å†Œæ–¹æ³•
 				usearRegister(e);
 			}
 		});
 
-		//³õÊ¼»¯Çå¿Õ°´Å¥²¢Ìí¼ÓÊÂ¼ş¼àÌıÆ÷
+		//åˆå§‹åŒ–æ¸…ç©ºæŒ‰é’®å¹¶æ·»åŠ äº‹ä»¶ç›‘å¬å™¨
 		JButton buttonNot = new JButton("\u6E05\u7A7A");
 		buttonNot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//µ÷ÓÃÇå¿ÕÎÄ±¾¿ò·½·¨
+				//è°ƒç”¨æ¸…ç©ºæ–‡æœ¬æ¡†æ–¹æ³•
 				delActiontxt();
 			}
 		});
@@ -136,12 +136,12 @@ public class RegisterInterface extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 /**
- * ¶ÁÕß×¢²á·½·¨
- * ´¦ÀíÓÃ»§µÄ×¢²áÇëÇó£¬ÑéÖ¤ÊäÈë²¢½«Êı¾İ´æÈëÊı¾İ¿â
+ * è¯»è€…æ³¨å†Œæ–¹æ³•
+ * å¤„ç†ç”¨æˆ·çš„æ³¨å†Œè¯·æ±‚ï¼ŒéªŒè¯è¾“å…¥å¹¶å°†æ•°æ®å­˜å…¥æ•°æ®åº“
  * @param e
  */
 	private void usearRegister(ActionEvent e) {
-		//»ñÈ¡ÓÃ»§ÊäÈë
+		//è·å–ç”¨æˆ·è¾“å…¥
 		 String readerIdStr = this.reader_id.getText().toString();
 		 int readerId = 0;
 		 if(!StringNull.isEmpty(readerIdStr)) {
@@ -152,57 +152,57 @@ public class RegisterInterface extends JFrame {
 		 String readerPhone = this.reader_phone.getText();
 		 String readerPassword = this.reader_password.getText();
 
-		 //ÑéÖ¤ÊäÈëÊÇ·ñÎª¿Õ
+		 //éªŒè¯è¾“å…¥æ˜¯å¦ä¸ºç©º
 		 if(StringNull.isEmpty(readerIdStr)) {
-			 JOptionPane.showMessageDialog(null,"ÓÃ»§±àºÅ²»ÄÜÎª¿Õ!");
+			 JOptionPane.showMessageDialog(null,"ç”¨æˆ·ç¼–å·ä¸èƒ½ä¸ºç©º!");
 			 return;
 		 }
 		 if(StringNull.isEmpty(readerName)) {
-			 JOptionPane.showMessageDialog(null, "ÓÃ»§ĞÕÃû²»ÄÜÎª¿Õ£¡");
+			 JOptionPane.showMessageDialog(null, "ç”¨æˆ·å§“åä¸èƒ½ä¸ºç©ºï¼");
 			 return;
 		 }
 		 if(StringNull.isEmpty(readerPhone)) {
-			 JOptionPane.showMessageDialog(null, "ÓÃ»§ÊÖ»úºÅ²»ÄÜÎª¿Õ£¡");
+			 JOptionPane.showMessageDialog(null, "ç”¨æˆ·æ‰‹æœºå·ä¸èƒ½ä¸ºç©ºï¼");
 			 return;
 		 }
 		 if(StringNull.isEmpty(readerPassword)) {
-			 JOptionPane.showMessageDialog(null, "ÓÃ»§ÃÜÂë²»ÄÜÎª¿Õ£¡");
+			 JOptionPane.showMessageDialog(null, "ç”¨æˆ·å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
 			 return;
 		 }
 		 
 		 Connection con = null;
 		 UserDao ud = new UserDao();
 		 try {
-			 //´´½¨¶ÁÕß¶ÔÏó
+			 //åˆ›å»ºè¯»è€…å¯¹è±¡
 			Reader reader = new Reader(readerId,readerName,readerPhone,readerPassword);
-			con = conutil.loding();//Á¬½ÓÊı¾İ¿â
+			con = conutil.loding();//è¿æ¥æ•°æ®åº“
 
-			 //¼ì²éÕËºÅÊÇ·ñÒÑ´æÔÚ
+			 //æ£€æŸ¥è´¦å·æ˜¯å¦å·²å­˜åœ¨
 			 Reader rs = ud.login(con, reader);
 			if(String.valueOf(rs.getReader_id()).equals(readerIdStr)) {
-				JOptionPane.showMessageDialog(null, "ÕËºÅÒÑ´æÔÚ£¬×¢²áÊ§°Ü!");
+				JOptionPane.showMessageDialog(null, "è´¦å·å·²å­˜åœ¨ï¼Œæ³¨å†Œå¤±è´¥!");
 				return;
 			}
 			else {
-				ud.register(con, reader);//×¢²áĞÂÓÃ»§
-				JOptionPane.showMessageDialog(null, "×¢²á³É¹¦!");
+				ud.register(con, reader);//æ³¨å†Œæ–°ç”¨æˆ·
+				JOptionPane.showMessageDialog(null, "æ³¨å†ŒæˆåŠŸ!");
 				return;
 			}
 		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(null, "ÕËºÅÒÑ´æÔÚ£¬×¢²áÊ§°Ü!");
+			JOptionPane.showMessageDialog(null, "è´¦å·å·²å­˜åœ¨ï¼Œæ³¨å†Œå¤±è´¥!");
 			e1.printStackTrace();
 			return;
 		} finally {
 			  try {
-				conutil.closeCon(con);//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+				conutil.closeCon(con);//å…³é—­æ•°æ®åº“è¿æ¥
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 		}
 	}
 	/**
-	 * Çå¿ÕÊäÈë¿ò·½·¨
-	 * Çå¿ÕËùÓĞÊäÈëÎÄ±¾¿òµÄÄÚÈİ
+	 * æ¸…ç©ºè¾“å…¥æ¡†æ–¹æ³•
+	 * æ¸…ç©ºæ‰€æœ‰è¾“å…¥æ–‡æœ¬æ¡†çš„å†…å®¹
 	 */
 
 	private void delActiontxt() {

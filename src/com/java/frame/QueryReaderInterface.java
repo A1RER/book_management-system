@@ -29,49 +29,49 @@ import com.java.util.StringNull;
 import java.awt.Font;
 
 /**
- * ÓÃ»§²éÑ¯½çÃæ
- * Ìá¹©¸ù¾İÓÃ»§±àºÅ²éÑ¯ÓÃ»§ĞÅÏ¢µÄ¹¦ÄÜ
+ * ç”¨æˆ·æŸ¥è¯¢ç•Œé¢
+ * æä¾›æ ¹æ®ç”¨æˆ·ç¼–å·æŸ¥è¯¢ç”¨æˆ·ä¿¡æ¯çš„åŠŸèƒ½
  */
 
 
 public class QueryReaderInterface extends JFrame {
 
-	private JPanel contentPane;//ÄÚÈİÃæ°å
-	private JTextField readerIdTxt;//ÓÃ»§±àºÅÊäÈë¿ò
-	private JTable readerTable;//ÓÃ»§ĞÅÏ¢±í¸ñ
-	private UserDao readerDao = new UserDao();//ÓÃ»§Êı¾İ·ÃÎÊ¶ÔÏó
-	private Connect conutil = new Connect();//Êı¾İ¿âÁ¬½Ó¹¤¾ß
+	private JPanel contentPane;//å†…å®¹é¢æ¿
+	private JTextField readerIdTxt;//ç”¨æˆ·ç¼–å·è¾“å…¥æ¡†
+	private JTable readerTable;//ç”¨æˆ·ä¿¡æ¯è¡¨æ ¼
+	private UserDao readerDao = new UserDao();//ç”¨æˆ·æ•°æ®è®¿é—®å¯¹è±¡
+	private Connect conutil = new Connect();//æ•°æ®åº“è¿æ¥å·¥å…·
 
 	/**
-	 * ´´½¨ÓÃ»§²éÑ¯½çÃæ
+	 * åˆ›å»ºç”¨æˆ·æŸ¥è¯¢ç•Œé¢
 	 */
 	public QueryReaderInterface() {
-		setTitle("²éÕÒ");//ÉèÖÃ´°¿Ú±êÌâ
-		setBounds(100, 100, 781, 471);//ÉèÖÃ´°¿ÚÎ»ÖÃºÍ´óĞ¡
+		setTitle("æŸ¥æ‰¾");//è®¾ç½®çª—å£æ ‡é¢˜
+		setBounds(100, 100, 781, 471);//è®¾ç½®çª—å£ä½ç½®å’Œå¤§å°
 
-		//³õÊ¼»¯ÄÚÈİÃæ°å
+		//åˆå§‹åŒ–å†…å®¹é¢æ¿
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		//³õÊ¼»¯ÓÃ»§±àºÅ±êÇ©
-		JLabel lblNewLabel = new JLabel("ÓÃ»§±àºÅ");
-		lblNewLabel.setFont(new Font("ËÎÌå", Font.PLAIN, 20));
+		//åˆå§‹åŒ–ç”¨æˆ·ç¼–å·æ ‡ç­¾
+		JLabel lblNewLabel = new JLabel("ç”¨æˆ·ç¼–å·");
+		lblNewLabel.setFont(new Font("å®‹ä½“", Font.PLAIN, 20));
 
-		//³õÊ¼»¯ÓÃ»§±àºÅÊäÈë¿ò
+		//åˆå§‹åŒ–ç”¨æˆ·ç¼–å·è¾“å…¥æ¡†
 		readerIdTxt = new JTextField();
-		readerIdTxt.setFont(new Font("ËÎÌå", Font.PLAIN, 20));
+		readerIdTxt.setFont(new Font("å®‹ä½“", Font.PLAIN, 20));
 		readerIdTxt.setColumns(10);
 
-		//³õÊ¼»¯²éÑ¯°´Å¥²¢Ìí¼ÓÊÂ¼ş¼àÌıÆ÷
-		JButton btnNewButton = new JButton("²éÕÒ");
+		//åˆå§‹åŒ–æŸ¥è¯¢æŒ‰é’®å¹¶æ·»åŠ äº‹ä»¶ç›‘å¬å™¨
+		JButton btnNewButton = new JButton("æŸ¥æ‰¾");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				queryReader();//µ÷ÓÃ²éÑ¯ÓÃ»§·½·¨
+				queryReader();//è°ƒç”¨æŸ¥è¯¢ç”¨æˆ·æ–¹æ³•
 			}
 		});
 
-		//³õÊ¼»¯¹ö¶¯Ãæ°åÓÃÓÚÏÔÊ¾±í¸ñ
+		//åˆå§‹åŒ–æ»šåŠ¨é¢æ¿ç”¨äºæ˜¾ç¤ºè¡¨æ ¼
 		JScrollPane scrollPane = new JScrollPane();
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -107,13 +107,13 @@ public class QueryReaderInterface extends JFrame {
 					.addContainerGap(43, Short.MAX_VALUE))
 		);
 
-		//³õÊ¼»¯ÓÃ»§ĞÅÏ¢±í¸ñ£¬ÉèÖÃÎª²»¿É±à¼­
+		//åˆå§‹åŒ–ç”¨æˆ·ä¿¡æ¯è¡¨æ ¼ï¼Œè®¾ç½®ä¸ºä¸å¯ç¼–è¾‘
 		readerTable = new JTable();
 		readerTable.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-					"±àºÅ", "ĞÕÃû", "µç»°", "ÃÜÂë"
+					"ç¼–å·", "å§“å", "ç”µè¯", "å¯†ç "
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -128,35 +128,35 @@ public class QueryReaderInterface extends JFrame {
 	}
 	
 	/**
-	 * ÓÃ»§²éÑ¯·½·¨
-	 * ¸ù¾İÊäÈëµÄÓÃ»§±àºÅ´ÓÊı¾İ¿â²éÑ¯ÓÃ»§ĞÅÏ¢²¢ÏÔÊ¾ÔÚ±í¸ñÖĞ
+	 * ç”¨æˆ·æŸ¥è¯¢æ–¹æ³•
+	 * æ ¹æ®è¾“å…¥çš„ç”¨æˆ·ç¼–å·ä»æ•°æ®åº“æŸ¥è¯¢ç”¨æˆ·ä¿¡æ¯å¹¶æ˜¾ç¤ºåœ¨è¡¨æ ¼ä¸­
 	 */
 	protected void queryReader() {
-		String readerId = this.readerIdTxt.getText();//»ñÈ¡ÓÃ»§ÊäÈëµÄ±àºÅ
+		String readerId = this.readerIdTxt.getText();//è·å–ç”¨æˆ·è¾“å…¥çš„ç¼–å·
 		DefaultTableModel dtm = (DefaultTableModel) readerTable.getModel();
-		dtm.setRowCount(0);//Çå¿ÕÊı¾İ±í¸ñ
+		dtm.setRowCount(0);//æ¸…ç©ºæ•°æ®è¡¨æ ¼
 
-		//ÑéÖ¤ÊäÈë
+		//éªŒè¯è¾“å…¥
 		if(StringNull.isEmpty(readerId)) {
-			JOptionPane.showMessageDialog(null, "ÓÃ»§±àºÅ²»ÄÜÎª¿Õ");
+			JOptionPane.showMessageDialog(null, "ç”¨æˆ·ç¼–å·ä¸èƒ½ä¸ºç©º");
 			return ;
 		}
 		
 		Connection con = null;
 		try {
-			con = conutil.loding();//Á¬½ÓÊı¾İ¿â
-			//²éÑ¯Ö¸¶¨±àºÅµÄÓÃ»§ĞÅÏ¢
+			con = conutil.loding();//è¿æ¥æ•°æ®åº“
+			//æŸ¥è¯¢æŒ‡å®šç¼–å·çš„ç”¨æˆ·ä¿¡æ¯
 			ResultSet rs = readerDao.query(con, Integer.parseInt(readerId));
 			while(rs.next()) {
 				Vector v = new Vector();
-				v.add(rs.getString("reader_id"));//Ìí¼ÓÓÃ»§±àºÅ
-				v.add(rs.getNString("reader_name"));//Ìí¼ÓÓÃ»§ĞÕÃû
-				v.add(rs.getString("reader _phone"));//Ìí¼ÓÓÃ»§µç»°£¬ÕâÈ·ÊµÓĞÒ»¸ö¿Õ¸ñ
-				v.add(rs.getString("reader_password"));//Ìí¼ÓÓÃ»§ÃÜÂë
-				dtm.addRow(v);//Ìí¼ÓÒ»ĞĞÊı¾İµ½±í¸ñ
+				v.add(rs.getString("reader_id"));//æ·»åŠ ç”¨æˆ·ç¼–å·
+				v.add(rs.getNString("reader_name"));//æ·»åŠ ç”¨æˆ·å§“å
+				v.add(rs.getString("reader _phone"));//æ·»åŠ ç”¨æˆ·ç”µè¯ï¼Œè¿™ç¡®å®æœ‰ä¸€ä¸ªç©ºæ ¼
+				v.add(rs.getString("reader_password"));//æ·»åŠ ç”¨æˆ·å¯†ç 
+				dtm.addRow(v);//æ·»åŠ ä¸€è¡Œæ•°æ®åˆ°è¡¨æ ¼
 			}
 		} catch (Exception e) {
-			e.printStackTrace();//´òÓ¡Òì³£¶ÑÕ»ĞÅÏ¢
+			e.printStackTrace();//æ‰“å°å¼‚å¸¸å †æ ˆä¿¡æ¯
 		}
 	}
 }

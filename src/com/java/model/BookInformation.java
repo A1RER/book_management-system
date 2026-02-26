@@ -3,15 +3,15 @@ package com.java.model;
 import javax.xml.crypto.Data;
 
 /**
- * ·â×°Í¼Êé×´Ì¬µÄÊµÌåÀà
+ * å°è£…å›¾ä¹¦çŠ¶æ€çš„å®ä½“ç±»
  *
  */
 public class BookInformation {
-	private int book_id;//Í¼ÊéID
-	private String reader_name;//½èÊé¶ÁÕßname
-	private Data borrow_data;//½èÊéÊ±¼ä
-    private Data return_data;//»¹ÊéÊ±¼ä
-    private String book_status;//Í¼Êé×´Ì¬
+	private int book_id;//å›¾ä¹¦ID
+	private String reader_name;//å€Ÿä¹¦è¯»è€…name
+	private Data borrow_data;//å€Ÿä¹¦æ—¶é—´
+    private Data return_data;//è¿˜ä¹¦æ—¶é—´
+    private String book_status;//å›¾ä¹¦çŠ¶æ€
     
 	public BookInformation(int book_id) {
 		super();

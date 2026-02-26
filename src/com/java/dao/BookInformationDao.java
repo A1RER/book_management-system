@@ -9,17 +9,17 @@ import java.sql.Time;
 import com.java.model.BookInformation;
 
 /**
- * Í¼Êé½èÔÄĞÅÏ¢Êı¾İ ·ÃÎÊ¶ÔÏó£¬¸ºÔğÓëÊı¾İ¿â½øĞĞ½»»¥£¬Ìá¹©Í¼Êé½èÔÄĞÅÏ¢µÄÌí¼Ó£¬²éÑ¯£¬É¾³ı²Ù×÷
+ * å›¾ä¹¦å€Ÿé˜…ä¿¡æ¯æ•°æ® è®¿é—®å¯¹è±¡ï¼Œè´Ÿè´£ä¸æ•°æ®åº“è¿›è¡Œäº¤äº’ï¼Œæä¾›å›¾ä¹¦å€Ÿé˜…ä¿¡æ¯çš„æ·»åŠ ï¼ŒæŸ¥è¯¢ï¼Œåˆ é™¤æ“ä½œ
  */
 
 public class BookInformationDao {
 	/**
-	 * book_borrow±íÌí¼Ó²Ù×÷
-	 * Ïòbook_information±íÖĞÌí¼Ó½èÔÄĞÅÏ¢
-	 * @param con Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param booki °üº¬ÒªÌí¼ÓĞÅÏ¢µÄÍ¼Êé½èÔÄĞÅÏ¢¶ÔÏó
-	 * @return ·µ»ØÊÜÓ°ÏìµÄĞĞÊı
-	 * @throws Exception Êı¾İ¿â²Ù×÷Òì³£
+	 * book_borrowè¡¨æ·»åŠ æ“ä½œ
+	 * å‘book_informationè¡¨ä¸­æ·»åŠ å€Ÿé˜…ä¿¡æ¯
+	 * @param con æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param booki åŒ…å«è¦æ·»åŠ ä¿¡æ¯çš„å›¾ä¹¦å€Ÿé˜…ä¿¡æ¯å¯¹è±¡
+	 * @return è¿”å›å—å½±å“çš„è¡Œæ•°
+	 * @throws Exception æ•°æ®åº“æ“ä½œå¼‚å¸¸
 	 */
 	public int add(Connection con, BookInformation booki) throws Exception{
 		String sql = "insert into book_information values(?,?,?,?,?)";
@@ -34,12 +34,12 @@ public class BookInformationDao {
 		return pstmt.executeUpdate();
 	}
 	/**
-	 * book_borrow±í¹é»¹²Ù×÷
-	 * ¸ù¾İÍ¼Êéid²éÑ¯Í¼Êé½èÔÄĞÅÏ¢
-	 * @param con Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param booki °üº¬Í¼ÊéidµÄÍ¼Êé½èÔÄĞÅÏ¢¶ÔÏó
-	 * @return ·µ»Ø²éÑ¯½á¹ûµÄresultset¶ÔÏó
-	 * @throws SQLException Êı¾İ¿â²Ù×÷Òì³£
+	 * book_borrowè¡¨å½’è¿˜æ“ä½œ
+	 * æ ¹æ®å›¾ä¹¦idæŸ¥è¯¢å›¾ä¹¦å€Ÿé˜…ä¿¡æ¯
+	 * @param con æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param booki åŒ…å«å›¾ä¹¦idçš„å›¾ä¹¦å€Ÿé˜…ä¿¡æ¯å¯¹è±¡
+	 * @return è¿”å›æŸ¥è¯¢ç»“æœçš„resultsetå¯¹è±¡
+	 * @throws SQLException æ•°æ®åº“æ“ä½œå¼‚å¸¸
 	 */
 	public ResultSet returnn(Connection con, BookInformation booki) throws SQLException { 
 		ResultSet rs = null;
@@ -50,12 +50,12 @@ public class BookInformationDao {
 		return rs;
 	}
 	/**
-	 * book_borrow±íÉ¾³ı²Ù×÷
-	 * ¸ù¾İÍ¼ÊéidÉ¾³ıÍ¼Êé½èÔÄĞÅÏ¢
-	 * @param con Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param bookId ÒªÉ¾³ıµÄÍ¼Êéid
-	 * @return ·µ»ØÊÜÓ°ÏìµÄĞĞÊı
-	 * @throws Exception Êı¾İ¿â²Ù×÷Òì³£
+	 * book_borrowè¡¨åˆ é™¤æ“ä½œ
+	 * æ ¹æ®å›¾ä¹¦idåˆ é™¤å›¾ä¹¦å€Ÿé˜…ä¿¡æ¯
+	 * @param con æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param bookId è¦åˆ é™¤çš„å›¾ä¹¦id
+	 * @return è¿”å›å—å½±å“çš„è¡Œæ•°
+	 * @throws Exception æ•°æ®åº“æ“ä½œå¼‚å¸¸
 	 */
 	public int delete(Connection con,int bookId) throws Exception{
 		String sql = "delete from book_information where book_id = ?";
